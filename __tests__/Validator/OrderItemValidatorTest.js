@@ -7,4 +7,10 @@ describe("OrderItemValidator 클래스 테스트", () => {
     const orderItemsValidator = new OrderItemValidator(input);
     expect(() => orderItemsValidator.validateOrder()).toThrow(AppError.PREFIX);
   });
+
+  test("메뉴 주문시 형식을 지켜야한다.", () => {
+    const input = "양송이스프 2개,타파스 1개";
+    const orderItemsValidator = new OrderItemValidator(input);
+    expect(() => orderItemsValidator.validateOrder()).toThrow(AppError.PREFIX);
+  });
 });
