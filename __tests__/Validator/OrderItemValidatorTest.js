@@ -13,4 +13,10 @@ describe("OrderItemValidator 클래스 테스트", () => {
     const orderItemsValidator = new OrderItemValidator(input);
     expect(() => orderItemsValidator.validateOrder()).toThrow(AppError.PREFIX);
   });
+
+  test("메뉴 주문은 최소 1개부터 가능하다.", () => {
+    const input = "양송이스프-0";
+    const orderItemsValidator = new OrderItemValidator(input);
+    expect(() => orderItemsValidator.validateOrder()).toThrow(AppError.PREFIX);
+  });
 });
