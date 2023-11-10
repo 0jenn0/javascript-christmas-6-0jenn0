@@ -16,7 +16,7 @@ export default class OrderItemValidator {
   }
 
   #validateFormat() {
-    const pattern = /^[가-힣]+-\d+$/;
+    const pattern = /^[가-힣]+-[1-9]\d*$/;
 
     if (this.#orderItems.some((item) => !pattern.test(item))) {
       throw new AppError(ERROR_MESSAGE.invalid_format);
@@ -32,4 +32,6 @@ export default class OrderItemValidator {
       throw new AppError(ERROR_MESSAGE.invalid_format);
     }
   }
+
+  #validateMenuQuantity(orderItems) {}
 }
