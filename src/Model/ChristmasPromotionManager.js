@@ -28,7 +28,6 @@ export default class ChristmasPromotionManager {
     totalDiscount += this.calculateDdayDiscount();
     totalDiscount += this.calculateWeekendDiscount().discount;
     totalDiscount += this.calculateSpecialDiscount();
-    totalDiscount += this.calculateGiftMenu();
     return totalDiscount;
   }
 
