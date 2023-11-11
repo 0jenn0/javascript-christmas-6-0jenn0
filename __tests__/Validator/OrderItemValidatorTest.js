@@ -47,4 +47,10 @@ describe("OrderItemValidator 클래스 테스트", () => {
     const orderItemsValidator = new OrderItemValidator(input);
     expect(() => orderItemsValidator.validateOrder()).toThrow(AppError.PREFIX);
   });
+
+  test("음료만 주문 불가하다.", () => {
+    const input = "제로콜라-10,레드와인-5";
+    const orderItemsValidator = new OrderItemValidator(input);
+    expect(() => orderItemsValidator.validateOrder()).toThrow(AppError.PREFIX);
+  });
 });
