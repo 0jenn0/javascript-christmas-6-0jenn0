@@ -1,3 +1,4 @@
+import { MENU } from "../constants/menu.js";
 import Calendar from "./Calendar.js";
 
 export default class ChristmasPromotionManager {
@@ -62,6 +63,15 @@ export default class ChristmasPromotionManager {
   calculateSpecialDiscount() {
     if (this.#calendar.isSpecialDay()) {
       return 1_000;
+    }
+    return 0;
+  }
+
+  calculateGiftMenu() {
+    if (this.calculateAllOrderPrice() >= 120_000) {
+      return Object.values(MENU)
+        .flat()
+        .find((item) => item.name === "샴페인").price;
     }
     return 0;
   }
