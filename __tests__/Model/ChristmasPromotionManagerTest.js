@@ -47,4 +47,18 @@ describe("ChristmasPromotionManager 클래스 테스트", () => {
       2_023 * 3
     );
   });
+
+  test("평일에는 디저트메뉴 1개당 2,023원 할인해야한다.", () => {
+    const input = [
+      new OrderItem("티본스테이크", "2"),
+      new OrderItem("초코케이크", "1"),
+      new OrderItem("아이스크림", "1"),
+    ];
+    const day = 1;
+    const christmasPromotionManager = new ChristmasPromotionManager(input, day);
+
+    expect(christmasPromotionManager.calculateWeekendDiscount().discount).toBe(
+      2_023 * 2
+    );
+  });
 });
