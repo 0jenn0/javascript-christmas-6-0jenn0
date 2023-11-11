@@ -1,4 +1,4 @@
-import OrderItem from "../../src/model/OrderItem.js";
+import { OrderItem } from "../../src/Model/index.js";
 
 describe("OrderItem 클래스 테스트", () => {
   test("주문 금액을 구해야한다.", () => {
