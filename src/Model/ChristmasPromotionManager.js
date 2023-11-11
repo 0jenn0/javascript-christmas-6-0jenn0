@@ -1,4 +1,4 @@
-import Calendar from "./Calendar";
+import Calendar from "./Calendar.js";
 
 export default class ChristmasPromotionManager {
   #orderItemList;
@@ -60,8 +60,9 @@ export default class ChristmasPromotionManager {
   }
 
   calculateSpecialDiscount() {
-    if (this.#calendar(this.#day).isSpecialDay()) {
+    if (this.#calendar.isSpecialDay()) {
       return 1_000;
     }
+    return 0;
   }
 }

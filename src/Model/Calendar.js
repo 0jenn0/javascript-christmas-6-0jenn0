@@ -7,7 +7,7 @@ export default class Calendar {
 
   constructor(day) {
     DayValidator.validateDay(day);
-    this.#day = day;
+    this.#day = Number(day);
   }
 
   isPossibleDdayEvent() {
@@ -23,7 +23,7 @@ export default class Calendar {
     return false;
   }
 
-  isSpecailDay() {
+  isSpecialDay() {
     const date = new Date(this.#year, this.#month - 1, this.#day);
     const dayOfWeek = date.getDay();
     if (dayOfWeek === 0 || this.#day === 25) {

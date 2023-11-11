@@ -16,8 +16,8 @@ describe("Calendar 클래스 테스트", () => {
     const calendar2 = new Calendar(25);
     const calendar3 = new Calendar(11);
 
-    expect(calendar1.isSpecailDay(3)).toBe(true);
-    expect(calendar2.isSpecailDay(25)).toBe(true);
-    expect(calendar3.isSpecailDay(11)).toBe(false);
+    expect(calendar1.isSpecialDay()).toBe(true);
+    expect(calendar2.isSpecialDay()).toBe(true);
+    expect(calendar3.isSpecialDay()).toBe(false);
   });
 });
