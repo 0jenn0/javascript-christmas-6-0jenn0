@@ -1,6 +1,6 @@
 import AppError from "../Error/AppError.js";
 import ERROR_MESSAGE from "../Error/message.js";
-import { MENU } from "../constants/menu.js";
+import { MENU, MENU_CATEGORIES } from "../constants/menu.js";
 
 export default class OrderItemValidator {
   #orderItems;
@@ -15,6 +15,7 @@ export default class OrderItemValidator {
     this.#validateIsInMenu(this.#orderItems);
     this.#validateMenuQuantity(this.#orderItems);
     this.#validationDuplicateMenu(this.#orderItems);
+    this.#validateIsOnlyBeverage(this.#orderItems);
   }
 
   #validateFormat() {
@@ -55,6 +56,18 @@ export default class OrderItemValidator {
       new Set(orderItems.map((item) => item.split("-")[0])).size
     ) {
       throw new AppError(ERROR_MESSAGE.invalid_format);
+    }
+  }
+
+  #validateIsOnlyBeverage(orderItems) {
+    const beverageMenu = Object.values(MENU.beverage).map((item) => item.name);
+
+    const isAllBeverage = orderItems.every((item) =>
+      beverageMenu.includes(item.split("-")[0])
+    );
+
+    if (isAllBeverage) {
+      throw new AppError("음료만 주문 불가합니다.");
     }
   }
 }
