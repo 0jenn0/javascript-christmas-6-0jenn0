@@ -15,4 +15,10 @@ export default class OrderItem {
       .find((item) => item.name === this.#menuName).price;
     return menuPrice * this.#quantity;
   }
+
+  findMenuCategory() {
+    return Object.keys(MENU).find((category) =>
+      MENU[category].some((item) => item.name === this.#menuName)
+    );
+  }
 }
