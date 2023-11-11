@@ -13,7 +13,7 @@ export default class OrderItemValidator {
   validateOrder() {
     this.#validateFormat(this.#orderItems);
     this.#validateIsInMenu(this.#orderItems);
-    this.#validateMenuQuantity();
+    this.#validateMenuQuantity(this.#orderItems);
   }
 
   #validateFormat() {
@@ -34,6 +34,17 @@ export default class OrderItemValidator {
     );
     if (isAnyNotInMenu) {
       throw new AppError("ㅇㅇ");
+    }
+  }
+
+  #validateMenuQuantity(orderItems) {
+    const totalMenuQuantity = orderItems.reduce((accQuantity, orderItem) => {
+      accQuantity += Number(orderItem.split("-")[1]);
+      return accQuantity;
+    }, 0);
+
+    if (totalMenuQuantity > 20) {
+      throw new AppError("메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.");
     }
   }
 }
