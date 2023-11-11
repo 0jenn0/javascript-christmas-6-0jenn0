@@ -58,4 +58,10 @@ export default class ChristmasPromotionManager {
 
     return { isWeekend, discount };
   }
+
+  calculateSpecialDiscount() {
+    if (this.#calendar(this.#day).isSpecialDay()) {
+      return 1_000;
+    }
+  }
 }
