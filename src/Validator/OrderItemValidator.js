@@ -14,6 +14,7 @@ export default class OrderItemValidator {
     this.#validateFormat(this.#orderItems);
     this.#validateIsInMenu(this.#orderItems);
     this.#validateMenuQuantity(this.#orderItems);
+    this.#validationDuplicateMenu(this.#orderItems);
   }
 
   #validateFormat() {
@@ -33,7 +34,7 @@ export default class OrderItemValidator {
       (item) => !allMenu.includes(item.split("-")[0])
     );
     if (isAnyNotInMenu) {
-      throw new AppError("ㅇㅇ");
+      throw new AppError(ERROR_MESSAGE.invalid_format);
     }
   }
 
@@ -45,6 +46,15 @@ export default class OrderItemValidator {
 
     if (totalMenuQuantity > 20) {
       throw new AppError("메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.");
+    }
+  }
+
+  #validationDuplicateMenu(orderItems) {
+    if (
+      orderItems.length !==
+      new Set(orderItems.map((item) => item.split("-")[0])).size
+    ) {
+      throw new AppError(ERROR_MESSAGE.invalid_format);
     }
   }
 }
