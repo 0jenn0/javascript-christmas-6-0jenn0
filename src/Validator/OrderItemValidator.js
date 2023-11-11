@@ -37,7 +37,6 @@ export default class OrderItemValidator {
       accQuantity += Number(orderItem.split("-")[1]);
       return accQuantity;
     }, 0);
-    console.log(totalMenuQuantity);
 
     if (totalMenuQuantity > 20) {
       throw new AppError("메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.");
