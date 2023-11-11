@@ -13,6 +13,7 @@ export default class OrderItemValidator {
   validateOrder() {
     this.#validateFormat(this.#orderItems);
     this.#validateIsInMenu(this.#orderItems);
+    this.#validateMenuQuantity();
   }
 
   #validateFormat() {
@@ -24,14 +25,15 @@ export default class OrderItemValidator {
   }
 
   #validateIsInMenu(orderItems) {
-    const allMenu = Object.values(MENU).flat((item) => item.name);
-    const isAllinMenu = orderItems.every((item) =>
-      allMenu.includes(item.split("-")[0])
+    const allMenu = Object.values(MENU)
+      .flat()
+      .map((item) => item.name);
+
+    const isAnyNotInMenu = orderItems.some(
+      (item) => !allMenu.includes(item.split("-")[0])
     );
-    if (!isAllinMenu) {
-      throw new AppError(ERROR_MESSAGE.invalid_format);
+    if (isAnyNotInMenu) {
+      throw new AppError("ㅇㅇ");
     }
   }
-
-  #validateMenuQuantity(orderItems) {}
 }
