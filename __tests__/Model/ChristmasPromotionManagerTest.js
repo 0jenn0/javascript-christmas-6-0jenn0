@@ -61,4 +61,16 @@ describe("ChristmasPromotionManager 클래스 테스트", () => {
       2_023 * 2
     );
   });
+
+  test("달력에 별이 있는 날 특별 할인 가격은 1000원이다.", () => {
+    const input = [
+      new OrderItem("티본스테이크", "2"),
+      new OrderItem("초코케이크", "1"),
+      new OrderItem("아이스크림", "1"),
+    ];
+    const day = 25;
+    const christmasPromotionManager = new ChristmasPromotionManager(input, day);
+
+    expect(christmasPromotionManager.calculateSpecialDiscount()).toBe(1_000);
+  });
 });
