@@ -94,4 +94,17 @@ export default class ChristmasPromotionManager {
     }
     return 0;
   }
+
+  determineBadgeAward() {
+    const totalPrice = this.calculateAllOrderPrice();
+
+    if (totalPrice >= 20_000) {
+      return "산타";
+    } else if (totalPrice >= 10_000) {
+      return "트리";
+    } else if (totalPrice >= 5_000) {
+      return "별";
+    }
+    return "없음";
+  }
 }
