@@ -85,4 +85,25 @@ describe("ChristmasPromotionManager 클래스 테스트", () => {
 
     expect(christmasPromotionManager.calculateGiftMenu()).toBe(25_000);
   });
+
+  test("총금액이 1만원 미만은 할인이 없다. - 엣지 케이스", () => {
+    const input = [new OrderItem("아이스크림", "2")];
+    const day = 25;
+    const christmasPromotionManager = new ChristmasPromotionManager(input, day);
+    expect(christmasPromotionManager.calculateTotalDiscount()).not.toBe(0);
+  });
+
+  test("총금액이 1만원 이상일 때 이벤트가 있다.", () => {
+    const input = [new OrderItem("초코케이크", "1")];
+    const day = 25;
+
+    const christmasPromotionManager = new ChristmasPromotionManager(input, day);
+
+    const spy = jest.spyOn(christmasPromotionManager, "calculateTotalDiscount");
+
+    christmasPromotionManager.calculatePriceAfterPromotion();
+
+    expect(spy).toHaveBeenCalled();
+    spy.mockRestore();
+  });
 });
