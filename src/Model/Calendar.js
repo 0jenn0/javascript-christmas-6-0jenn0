@@ -1,14 +1,21 @@
-export default class Calendar {
-  #year;
-  #month;
+import DayValidator from "../Validator/DayValidator.js";
 
-  constructor(year, month) {
-    this.#year = year;
-    this.#month = month;
+export default class Calendar {
+  #year = 2023;
+  #month = 12;
+  #day;
+
+  constructor(day) {
+    DayValidator.validateDay(day);
+    this.#day = day;
   }
 
-  isWeekend(day) {
-    const date = new Date(this.#year, this.#month - 1, day);
+  isPossibleDdayEvent() {
+    return this.#day >= 1 && this.#day <= 25;
+  }
+
+  isWeekend() {
+    const date = new Date(this.#year, this.#month - 1, this.#day);
     const dayOfWeek = date.getDay();
     if (dayOfWeek === 5 || dayOfWeek === 6) {
       return true;
@@ -16,12 +23,16 @@ export default class Calendar {
     return false;
   }
 
-  isSpecailDay(day) {
-    const date = new Date(this.#year, this.#month - 1, day);
+  isSpecailDay() {
+    const date = new Date(this.#year, this.#month - 1, this.#day);
     const dayOfWeek = date.getDay();
-    if (dayOfWeek === 0 || day === 25) {
+    if (dayOfWeek === 0 || this.#day === 25) {
       return true;
     }
     return false;
+  }
+
+  calculateDaysSinceFirst() {
+    return this.#day - 1;
   }
 }

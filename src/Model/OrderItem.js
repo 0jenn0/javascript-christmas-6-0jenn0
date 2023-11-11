@@ -6,7 +6,7 @@ export default class OrderItem {
 
   constructor(menuName, quantity) {
     this.#menuName = menuName;
-    this.#quantity = quantity;
+    this.#quantity = Number(quantity);
   }
 
   calculateTotalPrice() {
@@ -20,5 +20,9 @@ export default class OrderItem {
     return Object.keys(MENU).find((category) =>
       MENU[category].some((item) => item.name === this.#menuName)
     );
+  }
+
+  getQuantity() {
+    return this.#quantity;
   }
 }

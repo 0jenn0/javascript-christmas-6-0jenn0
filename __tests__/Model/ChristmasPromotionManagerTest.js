@@ -1,8 +1,4 @@
-import {
-  OrderItem,
-  ChristmasPromotionManager,
-  Day,
-} from "../../src/Model/index.js";
+import { OrderItem, ChristmasPromotionManager } from "../../src/Model/index.js";
 
 describe("ChristmasPromotionManager 클래스 테스트", () => {
   test("총주문 금액을 구해야한다.", () => {
@@ -10,7 +6,7 @@ describe("ChristmasPromotionManager 클래스 테스트", () => {
       new OrderItem("티본스테이크", "2"),
       new OrderItem("레드와인", "1"),
     ];
-    const day = new Day("10");
+    const day = 10;
     const christmasPromotionManager = new ChristmasPromotionManager(input, day);
 
     expect(christmasPromotionManager.calculateAllOrderPrice()).toBe(170_000);
@@ -21,7 +17,7 @@ describe("ChristmasPromotionManager 클래스 테스트", () => {
       new OrderItem("티본스테이크", "2"),
       new OrderItem("레드와인", "1"),
     ];
-    const day = new Day("25");
+    const day = 25;
     const christmasPromotionManager = new ChristmasPromotionManager(input, day);
 
     expect(christmasPromotionManager.calculateDdayDiscount()).toBe(3_400);
@@ -32,9 +28,23 @@ describe("ChristmasPromotionManager 클래스 테스트", () => {
       new OrderItem("티본스테이크", "2"),
       new OrderItem("레드와인", "1"),
     ];
-    const day = new Day("30");
+    const day = 30;
     const christmasPromotionManager = new ChristmasPromotionManager(input, day);
 
     expect(christmasPromotionManager.calculateDdayDiscount()).toBe(0);
+  });
+
+  test("주말에는 메인메뉴 1개당 2,023원 할인해야한다.", () => {
+    const input = [
+      new OrderItem("티본스테이크", "2"),
+      new OrderItem("바비큐립", "1"),
+      new OrderItem("레드와인", "1"),
+    ];
+    const day = 1;
+    const christmasPromotionManager = new ChristmasPromotionManager(input, day);
+
+    expect(christmasPromotionManager.calculateWeekendDiscount().discount).toBe(
+      2_023 * 3
+    );
   });
 });
