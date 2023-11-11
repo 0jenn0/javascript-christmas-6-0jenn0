@@ -106,4 +106,13 @@ describe("ChristmasPromotionManager 클래스 테스트", () => {
     expect(spy).toHaveBeenCalled();
     spy.mockRestore();
   });
+
+  test("총금액에 따라 배지를 증정해야한다.", () => {
+    const input = [new OrderItem("초코케이크", "1")];
+    const day = 25;
+
+    const christmasPromotionManager = new ChristmasPromotionManager(input, day);
+
+    expect(christmasPromotionManager.determineBadgeAward()).toBe("트리");
+  });
 });
