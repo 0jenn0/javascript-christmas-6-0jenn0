@@ -73,4 +73,16 @@ describe("ChristmasPromotionManager 클래스 테스트", () => {
 
     expect(christmasPromotionManager.calculateSpecialDiscount()).toBe(1_000);
   });
+
+  test("할인 전 총금액이 12만원 이상이면 샴페인을 증정한다.", () => {
+    const input = [
+      new OrderItem("티본스테이크", "2"),
+      new OrderItem("초코케이크", "1"),
+      new OrderItem("아이스크림", "1"),
+    ];
+    const day = 25;
+    const christmasPromotionManager = new ChristmasPromotionManager(input, day);
+
+    expect(christmasPromotionManager.calculateGiftMenu()).toBe(25_000);
+  });
 });
