@@ -1,32 +1,25 @@
 import AppError from "../Error/AppError.js";
 import ERROR_MESSAGE from "../Error/message.js";
-import { MENU, MENU_CATEGORIES } from "../constants/menu.js";
+import { MENU } from "../constants/menu.js";
 
 export default class OrderItemValidator {
-  #orderItems;
-
-  constructor(input) {
-    const orderItems = input.split(",");
-    this.#orderItems = orderItems;
+  static validateOrder(orderItems) {
+    this.#validateFormat(orderItems);
+    this.#validateIsInMenu(orderItems);
+    this.#validateMenuQuantity(orderItems);
+    this.#validationDuplicateMenu(orderItems);
+    this.#validateIsOnlyBeverage(orderItems);
   }
 
-  validateOrder() {
-    this.#validateFormat(this.#orderItems);
-    this.#validateIsInMenu(this.#orderItems);
-    this.#validateMenuQuantity(this.#orderItems);
-    this.#validationDuplicateMenu(this.#orderItems);
-    this.#validateIsOnlyBeverage(this.#orderItems);
-  }
-
-  #validateFormat() {
+  static #validateFormat(orderItems) {
     const pattern = /^[가-힣]+-[1-9]\d*$/;
 
-    if (this.#orderItems.some((item) => !pattern.test(item))) {
+    if (orderItems.some((item) => !pattern.test(item.trim()))) {
       throw new AppError(ERROR_MESSAGE.invalid_format);
     }
   }
 
-  #validateIsInMenu(orderItems) {
+  static #validateIsInMenu(orderItems) {
     const allMenu = Object.values(MENU)
       .flat()
       .map((item) => item.name);
@@ -39,18 +32,19 @@ export default class OrderItemValidator {
     }
   }
 
-  #validateMenuQuantity(orderItems) {
+  static #validateMenuQuantity(orderItems) {
     const totalMenuQuantity = orderItems.reduce((accQuantity, orderItem) => {
       accQuantity += Number(orderItem.split("-")[1]);
       return accQuantity;
     }, 0);
+    console.log(totalMenuQuantity);
 
     if (totalMenuQuantity > 20) {
       throw new AppError("메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.");
     }
   }
 
-  #validationDuplicateMenu(orderItems) {
+  static #validationDuplicateMenu(orderItems) {
     if (
       orderItems.length !==
       new Set(orderItems.map((item) => item.split("-")[0])).size
@@ -59,7 +53,7 @@ export default class OrderItemValidator {
     }
   }
 
-  #validateIsOnlyBeverage(orderItems) {
+  static #validateIsOnlyBeverage(orderItems) {
     const beverageMenu = Object.values(MENU.beverage).map((item) => item.name);
 
     const isAllBeverage = orderItems.every((item) =>
