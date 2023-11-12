@@ -1,10 +1,12 @@
 export default class WeekendEvent {
+  #orderItemList;
   #day;
   #calendar;
 
-  constructor(day) {
-    this.#calendar = new Calendar(day);
-    this.#day = Number(day);
+  constructor(orderItemList, day, calendar) {
+    this.#orderItemList = orderItemList;
+    this.#day = day;
+    this.#calendar = calendar;
   }
 
   #canOfferEvent() {

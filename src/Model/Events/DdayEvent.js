@@ -2,9 +2,9 @@ export default class DdayEvent {
   #day;
   #calendar;
 
-  constructor(day) {
-    this.#calendar = new Calendar(day);
-    this.#day = Number(day);
+  constructor(day, calendar) {
+    this.#day = day;
+    this.#calendar = calendar;
   }
 
   #canOfferEvent() {

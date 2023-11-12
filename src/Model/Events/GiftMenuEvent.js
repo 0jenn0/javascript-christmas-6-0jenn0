@@ -1,3 +1,5 @@
+import { MENU } from "../../constants/menu.js";
+
 export default class GiftMenuEvent {
   #totalPayment;
 
