@@ -23,9 +23,9 @@ export const MENU = deepFreeze({
   ],
 });
 
-export const MENU_CATEGORIES = Object.freeze(
-  Object.keys(MENU).reduce((acc, category) => {
-    acc[category] = category;
-    return acc;
-  }, {})
-);
+export const MENU_CATEGORIES = Object.freeze({
+  appetizer: "에피타이저",
+  main: "메인",
+  dessert: "디저트",
+  beverage: "음료",
+});
