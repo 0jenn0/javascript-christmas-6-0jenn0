@@ -7,7 +7,7 @@ import {
 } from "../Model/index.js";
 import { Console } from "@woowacourse/mission-utils";
 
-export default class ChistmasPromotion {
+export default class ChristmasPromotion {
   static async start() {
     OutputView.printHello();
 
@@ -66,5 +66,9 @@ export default class ChistmasPromotion {
 
     const discountDetail = christmasPromotionManager.fetchTotalDiscountInfo();
     OutputView.printDiscountDetails(discountDetail);
+
+    const totalDiscountAmount =
+      christmasPromotionManager.calculateTotalDiscount();
+    OutputView.printTotalDiscountAmount(totalDiscountAmount);
   }
 }
