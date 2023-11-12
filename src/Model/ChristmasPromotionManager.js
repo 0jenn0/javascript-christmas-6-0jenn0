@@ -38,14 +38,6 @@ export default class ChristmasPromotionManager {
     return allOrderPrice;
   }
 
-  // 특별 이벤트
-  calculateSpecialDiscount() {
-    if (this.#calendar.isSpecialDay()) {
-      return 1_000;
-    }
-    return 0;
-  }
-
   // 뱃지 이벤트
   determineBadgeAward() {
     const totalPrice = this.calculateAllOrderPrice();
