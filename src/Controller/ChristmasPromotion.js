@@ -48,5 +48,12 @@ export default class ChistmasPromotion {
     }, {});
 
     OutputView.printMenu(totalOrderMenu);
+
+    const christmasPromotionManager = new ChristmasPromotionManager(
+      orderList,
+      date
+    );
+    const totalPrice = christmasPromotionManager.calculateAllOrderPrice();
+    OutputView.printTotalPriceBeforePromotion(totalPrice);
   }
 }
