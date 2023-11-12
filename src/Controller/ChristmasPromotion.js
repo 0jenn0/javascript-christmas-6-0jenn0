@@ -63,5 +63,8 @@ export default class ChistmasPromotion {
       OutputView.printExpectedPaymentAfterDiscount(totalPrice);
       OutputView.printDecemberEventBadge("없음");
     }
+
+    const discountDetail = christmasPromotionManager.fetchTotalDiscountInfo();
+    OutputView.printDiscountDetails(discountDetail);
   }
 }
