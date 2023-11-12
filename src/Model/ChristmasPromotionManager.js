@@ -79,16 +79,6 @@ export default class ChristmasPromotionManager {
     return 0;
   }
 
-  // 증정 이벤트
-  calculateGiftMenu() {
-    if (this.calculateAllOrderPrice() >= 120_000) {
-      return Object.values(MENU)
-        .flat()
-        .find((item) => item.name === "샴페인").price;
-    }
-    return 0;
-  }
-
   // 뱃지 이벤트
   determineBadgeAward() {
     const totalPrice = this.calculateAllOrderPrice();
