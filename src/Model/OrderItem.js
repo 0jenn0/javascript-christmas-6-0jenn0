@@ -25,4 +25,10 @@ export default class OrderItem {
   getQuantity() {
     return this.#quantity;
   }
+
+  getInfo() {
+    const menuName = this.#menuName;
+    const quantity = this.#quantity;
+    return { menuName, quantity };
+  }
 }
