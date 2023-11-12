@@ -67,12 +67,15 @@ export default class ChristmasPromotion {
     const discountDetail = christmasPromotionManager.fetchTotalDiscountInfo();
     OutputView.printDiscountDetails(discountDetail);
 
-    const totalDiscountAmount =
-      christmasPromotionManager.calculateTotalDiscount();
-    OutputView.printTotalDiscountAmount(totalDiscountAmount);
+    const totalBenefitAmount =
+      christmasPromotionManager.calculateTotalBenefits();
+    OutputView.printTotalDiscountAmount(totalBenefitAmount);
 
     const expectedPayment =
       christmasPromotionManager.calculatePriceAfterPromotion();
     OutputView.printExpectedPaymentAfterDiscount(expectedPayment);
+
+    const badge = christmasPromotionManager.runBadgeEvent();
+    OutputView.printDecemberEventBadge(badge);
   }
 }

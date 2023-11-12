@@ -18,7 +18,7 @@ export default class ChristmasPromotionManager {
     this.#day = Number(day);
   }
 
-  initDiscountEvents() {
+  #initDiscountEvents() {
     const dDayEvent = new DdayEvent(this.#day, this.#calendar);
     const weekendEvent = new WeekendEvent(
       this.#orderItemList,
@@ -34,22 +34,30 @@ export default class ChristmasPromotionManager {
     const priceBeforePromotion = this.calculateAllOrderPrice();
 
     if (priceBeforePromotion >= 10_000) {
-      const totalDiscount = this.calculateTotalDiscount();
+      const totalDiscount = this.#calculateTotalDiscount();
       return priceBeforePromotion - totalDiscount;
     }
     return priceBeforePromotion;
   }
 
-  calculateTotalDiscount() {
-    const events = this.initDiscountEvents();
+  #calculateTotalDiscount() {
+    const events = this.#initDiscountEvents();
     const { giftMenuEvent, ...remainingEvents } = events;
-    const totalDiscount = Object.values(remainingEvents).reduce(
-      (acc, event) => {
-        acc += event.calculateDiscounAmount();
-        return acc;
-      },
-      0
-    );
+    const totalDiscount = this.#calculateDiscountSum(remainingEvents);
+    return totalDiscount;
+  }
+
+  calculateTotalBenefits() {
+    const events = this.#initDiscountEvents();
+    const totalDiscount = this.#calculateDiscountSum(events);
+    return totalDiscount;
+  }
+
+  #calculateDiscountSum(events) {
+    const totalDiscount = Object.values(events).reduce((acc, event) => {
+      acc += event.calculateDiscounAmount();
+      return acc;
+    }, 0);
     return totalDiscount;
   }
 
@@ -62,7 +70,7 @@ export default class ChristmasPromotionManager {
   }
 
   fetchTotalDiscountInfo() {
-    const events = this.initDiscountEvents();
+    const events = this.#initDiscountEvents();
     const tatalDiscountInfo = Object.values(events).reduce((acc, event) => {
       if (event.calculateDiscounAmount() !== 0) {
         acc.push(event.fetchDiscountInformation());
