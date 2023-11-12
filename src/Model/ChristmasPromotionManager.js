@@ -37,18 +37,4 @@ export default class ChristmasPromotionManager {
     }, 0);
     return allOrderPrice;
   }
-
-  // 뱃지 이벤트
-  determineBadgeAward() {
-    const totalPrice = this.calculateAllOrderPrice();
-
-    if (totalPrice >= 20_000) {
-      return "산타";
-    } else if (totalPrice >= 10_000) {
-      return "트리";
-    } else if (totalPrice >= 5_000) {
-      return "별";
-    }
-    return "없음";
-  }
 }
