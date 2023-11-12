@@ -19,7 +19,11 @@ export default class ChristmasPromotionManager {
 
   initDiscountEvents() {
     const dDayEvent = new DdayEvent(this.#day, this.#calendar);
-    const weekendEvent = new WeekendEvent(this.#day, this.#calendar);
+    const weekendEvent = new WeekendEvent(
+      this.#orderItemList,
+      this.#day,
+      this.#calendar
+    );
     const specialEvent = new SpecialEvent(this.#calendar);
     const giftMenuEvent = new GiftMenuEvent(this.calculateAllOrderPrice());
     return { dDayEvent, weekendEvent, specialEvent, giftMenuEvent };
@@ -50,5 +54,14 @@ export default class ChristmasPromotionManager {
       return accPrice;
     }, 0);
     return allOrderPrice;
+  }
+
+  fetchTotalDiscountInfo() {
+    const events = this.initDiscountEvents();
+    const tatalDiscountInfo = Object.values(events).map((event) =>
+      event.fetchDiscountInformation()
+    );
+
+    return tatalDiscountInfo;
   }
 }
