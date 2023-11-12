@@ -58,10 +58,12 @@ export default class ChristmasPromotionManager {
 
   fetchTotalDiscountInfo() {
     const events = this.initDiscountEvents();
-    const tatalDiscountInfo = Object.values(events).map((event) =>
-      event.fetchDiscountInformation()
-    );
-
+    const tatalDiscountInfo = Object.values(events).reduce((acc, event) => {
+      if (event.calculateDiscounAmount() !== 0) {
+        acc.push(event.fetchDiscountInformation());
+      }
+      return acc;
+    }, []);
     return tatalDiscountInfo;
   }
 }
