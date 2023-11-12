@@ -38,39 +38,6 @@ export default class ChristmasPromotionManager {
     return allOrderPrice;
   }
 
-  // Weekend event
-  calculateWeekendDiscount() {
-    const isWeekend = this.#calendar.isWeekend(this.#day);
-    if (isWeekend) {
-      const mainMenuNum = this.#orderItemList.reduce(
-        (accMenuNum, orderItem) => {
-          if (orderItem.findMenuCategory() === "main") {
-            accMenuNum += orderItem.getQuantity();
-            return accMenuNum;
-          }
-          return accMenuNum;
-        },
-        0
-      );
-      const discount = mainMenuNum * 2_023;
-
-      return { isWeekend, discount };
-    }
-    const dessertMenuNum = this.#orderItemList.reduce(
-      (accMenuNum, orderItem) => {
-        if (orderItem.findMenuCategory() === "dessert") {
-          accMenuNum += orderItem.getQuantity();
-          return accMenuNum;
-        }
-        return accMenuNum;
-      },
-      0
-    );
-    const discount = dessertMenuNum * 2_023;
-
-    return { isWeekend, discount };
-  }
-
   // 특별 이벤트
   calculateSpecialDiscount() {
     if (this.#calendar.isSpecialDay()) {
