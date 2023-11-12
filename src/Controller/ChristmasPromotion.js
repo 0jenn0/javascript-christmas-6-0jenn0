@@ -39,5 +39,14 @@ export default class ChistmasPromotion {
         Console.print(error.message);
       }
     }
+
+    const totalOrderMenu = orderList.reduce((acc, orderItem) => {
+      acc[orderItem.findMenuCategory()]
+        ? acc[orderItem.findMenuCategory()].push(orderItem.getInfo())
+        : (acc[orderItem.findMenuCategory()] = [orderItem.getInfo()]);
+      return acc;
+    }, {});
+
+    OutputView.printMenu(totalOrderMenu);
   }
 }
