@@ -55,5 +55,13 @@ export default class ChistmasPromotion {
     );
     const totalPrice = christmasPromotionManager.calculateAllOrderPrice();
     OutputView.printTotalPriceBeforePromotion(totalPrice);
+
+    if (totalPrice < 10_000) {
+      OutputView.printGiftMenu("없음");
+      OutputView.printDiscountDetails("없음");
+      OutputView.printTotalDiscountAmount(0);
+      OutputView.printExpectedPaymentAfterDiscount(totalPrice);
+      OutputView.printDecemberEventBadge("없음");
+    }
   }
 }

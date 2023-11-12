@@ -20,7 +20,32 @@ const OutputView = {
 
   printTotalPriceBeforePromotion(price) {
     Console.print(`<할인 전 총주문 금액>`);
-    Console.print(`${price.toLocaleString()}원`);
+    Console.print(`${price.toLocaleString()}원\n`);
+  },
+
+  printGiftMenu(gift) {
+    Console.print(`<증정 메뉴>`);
+    Console.print(`${gift}\n`);
+  },
+
+  printDiscountDetails(discountDetails) {
+    Console.print(`<혜택 내역>`);
+    Console.print(`${discountDetails}\n`);
+  },
+
+  printTotalDiscountAmount(discounAmount) {
+    Console.print(`<총혜택 금액>`);
+    Console.print(`${discounAmount.toLocaleString()}원\n`);
+  },
+
+  printExpectedPaymentAfterDiscount(expectedPayment) {
+    Console.print(`<할인 후 예상 결제 금액>`);
+    Console.print(`${expectedPayment.toLocaleString()}원\n`);
+  },
+
+  printDecemberEventBadge(badge) {
+    Console.print(`<12월 이벤트 배지>`);
+    Console.print(`${badge}\n`);
   },
 };
 
