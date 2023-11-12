@@ -1,5 +1,10 @@
-import { MENU } from "../constants/menu.js";
 import Calendar from "./Calendar.js";
+import {
+  DdayEvent,
+  GiftMenuEvent,
+  SpecialEvent,
+  WeekendEvent,
+} from "./Events/index.js";
 
 export default class ChristmasPromotionManager {
   #orderItemList;
@@ -10,6 +15,14 @@ export default class ChristmasPromotionManager {
     this.#orderItemList = orderItemList;
     this.#calendar = new Calendar(day);
     this.#day = Number(day);
+  }
+
+  initDiscountEvents() {
+    const dDayEvent = new DdayEvent(this.#day, this.#calendar);
+    const weekendEvent = new WeekendEvent(this.#day, this.#calendar);
+    const specialEvent = new SpecialEvent(this.#calendar);
+    const giftMenuEvent = new GiftMenuEvent(this.calculateAllOrderPrice());
+    return { dDayEvent, weekendEvent, specialEvent, giftMenuEvent };
   }
 
   calculatePriceAfterPromotion() {
@@ -23,10 +36,11 @@ export default class ChristmasPromotionManager {
   }
 
   calculateTotalDiscount() {
-    let totalDiscount = 0;
-    totalDiscount += this.calculateDdayDiscount();
-    totalDiscount += this.calculateWeekendDiscount().discount;
-    totalDiscount += this.calculateSpecialDiscount();
+    const events = this.initDiscountEvents();
+    const totalDiscount = Object.values(events).reduce((acc, event) => {
+      acc += event.calculateDiscounAmount();
+      return acc;
+    }, 0);
     return totalDiscount;
   }
 
