@@ -7,7 +7,6 @@ export default class ChristmasPromotionManager {
   #calendar;
 
   constructor(orderItemList, day) {
-    // orderItemList : List<OrderItem>, day: string
     this.#orderItemList = orderItemList;
     this.#calendar = new Calendar(day);
     this.#day = Number(day);
@@ -39,13 +38,7 @@ export default class ChristmasPromotionManager {
     return allOrderPrice;
   }
 
-  calculateDdayDiscount() {
-    if (1 <= this.#day && this.#day <= 25) {
-      return 1000 + 100 * this.#calendar.calculateDaysSinceFirst(this.#day);
-    }
-    return 0;
-  }
-
+  // Weekend event
   calculateWeekendDiscount() {
     const isWeekend = this.#calendar.isWeekend(this.#day);
     if (isWeekend) {
@@ -78,6 +71,7 @@ export default class ChristmasPromotionManager {
     return { isWeekend, discount };
   }
 
+  // 특별 이벤트
   calculateSpecialDiscount() {
     if (this.#calendar.isSpecialDay()) {
       return 1_000;
@@ -85,6 +79,7 @@ export default class ChristmasPromotionManager {
     return 0;
   }
 
+  // 증정 이벤트
   calculateGiftMenu() {
     if (this.calculateAllOrderPrice() >= 120_000) {
       return Object.values(MENU)
@@ -94,6 +89,7 @@ export default class ChristmasPromotionManager {
     return 0;
   }
 
+  // 뱃지 이벤트
   determineBadgeAward() {
     const totalPrice = this.calculateAllOrderPrice();
 
