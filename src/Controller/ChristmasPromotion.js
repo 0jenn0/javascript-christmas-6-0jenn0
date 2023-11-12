@@ -70,5 +70,9 @@ export default class ChristmasPromotion {
     const totalDiscountAmount =
       christmasPromotionManager.calculateTotalDiscount();
     OutputView.printTotalDiscountAmount(totalDiscountAmount);
+
+    const expectedPayment =
+      christmasPromotionManager.calculatePriceAfterPromotion();
+    OutputView.printExpectedPaymentAfterDiscount(expectedPayment);
   }
 }
