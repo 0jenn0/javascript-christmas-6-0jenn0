@@ -8,7 +8,7 @@ const OutputView = {
   },
 
   printMenu(totalOrderMenu) {
-    Console.print(`<주문 메뉴>`);
+    Console.print(`\n<주문 메뉴>`);
     Object.keys(totalOrderMenu).forEach((category) => {
       Console.print(`--- ${MENU_CATEGORIES[category]} ---`);
       totalOrderMenu[category].forEach((orderItem) => {
@@ -30,7 +30,14 @@ const OutputView = {
 
   printDiscountDetails(discountDetails) {
     Console.print(`<혜택 내역>`);
-    Console.print(`${discountDetails}\n`);
+    if (typeof discountDetails === "string") {
+      Console.print(`${discountDetails}\n`);
+    }
+
+    discountDetails.forEach(({ eventName, discountAmount }) =>
+      Console.print(`${eventName}: ${discountAmount.toLocaleString()}원`)
+    );
+    Console.print("");
   },
 
   printTotalDiscountAmount(discounAmount) {
