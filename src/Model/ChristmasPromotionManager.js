@@ -1,5 +1,6 @@
 import Calendar from "./Calendar.js";
 import {
+  BadgeEvent,
   DdayEvent,
   GiftMenuEvent,
   SpecialEvent,
@@ -41,10 +42,14 @@ export default class ChristmasPromotionManager {
 
   calculateTotalDiscount() {
     const events = this.initDiscountEvents();
-    const totalDiscount = Object.values(events).reduce((acc, event) => {
-      acc += event.calculateDiscounAmount();
-      return acc;
-    }, 0);
+    const { giftMenuEvent, ...remainingEvents } = events;
+    const totalDiscount = Object.values(remainingEvents).reduce(
+      (acc, event) => {
+        acc += event.calculateDiscounAmount();
+        return acc;
+      },
+      0
+    );
     return totalDiscount;
   }
 
@@ -65,5 +70,10 @@ export default class ChristmasPromotionManager {
       return acc;
     }, []);
     return tatalDiscountInfo;
+  }
+
+  runBadgeEvent() {
+    const badgeEvent = new BadgeEvent(this.calculateAllOrderPrice());
+    return badgeEvent.determineBadgeAward();
   }
 }
