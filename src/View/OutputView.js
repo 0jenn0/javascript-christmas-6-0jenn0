@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import { MENU_CATEGORIES } from "../constants/menu.js";
-import OrderItem from "../Model/OrderItem.js";
+import formatAsWon from "../utils/formatAsWon.js";
 
 const OutputView = {
   printHello() {
@@ -20,7 +20,7 @@ const OutputView = {
 
   printTotalPriceBeforePromotion(price) {
     Console.print(`<할인 전 총주문 금액>`);
-    Console.print(`${price.toLocaleString()}원\n`);
+    Console.print(`${formatAsWon(price)}\n`);
   },
 
   printGiftMenu(gift) {
@@ -35,19 +35,19 @@ const OutputView = {
     }
 
     discountDetails.forEach(({ eventName, discountAmount }) =>
-      Console.print(`${eventName}: ${discountAmount.toLocaleString()}원`)
+      Console.print(`${eventName}: -${formatAsWon(discountAmount)}`)
     );
     Console.print("");
   },
 
   printTotalDiscountAmount(discounAmount) {
     Console.print(`<총혜택 금액>`);
-    Console.print(`${discounAmount.toLocaleString()}원\n`);
+    Console.print(`-${formatAsWon(discounAmount)}\n`);
   },
 
   printExpectedPaymentAfterDiscount(expectedPayment) {
     Console.print(`<할인 후 예상 결제 금액>`);
-    Console.print(`${expectedPayment.toLocaleString()}원\n`);
+    Console.print(`${formatAsWon(expectedPayment)}\n`);
   },
 
   printDecemberEventBadge(badge) {
