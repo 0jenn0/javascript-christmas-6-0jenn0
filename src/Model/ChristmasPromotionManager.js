@@ -84,4 +84,12 @@ export default class ChristmasPromotionManager {
     const badgeEvent = new BadgeEvent(this.calculateAllOrderPrice());
     return badgeEvent.determineBadgeAward();
   }
+
+  runGiftMenuEvent() {
+    const giftMenuEvent = new GiftMenuEvent(this.calculateAllOrderPrice());
+    if (giftMenuEvent.canOfferEvent()) {
+      return "샴페인 1개";
+    }
+    return "없음";
+  }
 }

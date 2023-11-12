@@ -7,12 +7,12 @@ export default class GiftMenuEvent {
     this.#totalPayment = totalPayment;
   }
 
-  #canOfferEvent() {
+  canOfferEvent() {
     return this.#totalPayment >= 120_000;
   }
 
   calculateDiscounAmount() {
-    if (this.#canOfferEvent()) {
+    if (this.canOfferEvent()) {
       return Object.values(MENU)
         .flat()
         .find((item) => item.name === "샴페인").price;
