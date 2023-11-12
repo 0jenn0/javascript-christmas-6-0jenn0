@@ -23,5 +23,21 @@ export default class ChistmasPromotion {
         Console.print(error.message);
       }
     }
+
+    let orderList = [];
+    while (true) {
+      try {
+        const ordersInput = await InputView.readMenu();
+        OrderItemValidator.validateOrder(ordersInput);
+        ordersInput.forEach((orderItem) => {
+          orderList.push(
+            new OrderItem(orderItem.split("-")[0], orderItem.split("-")[1])
+          );
+        });
+        break;
+      } catch (error) {
+        Console.print(error.message);
+      }
+    }
   }
 }
