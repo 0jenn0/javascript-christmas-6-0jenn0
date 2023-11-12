@@ -9,7 +9,7 @@ export default class SpecialEvent {
     return this.#calendar.isSpecialDay();
   }
 
-  calculateSpecialDiscount() {
+  calculateDiscounAmount() {
     if (this.#canOfferEvent()) {
       return 1_000;
     }
@@ -19,7 +19,7 @@ export default class SpecialEvent {
   fetchDiscountInformation() {
     return {
       eventName: "특별 할인",
-      discountAmount: this.calculateSpecialDiscount(),
+      discountAmount: this.calculateDiscounAmount(),
     };
   }
 }
