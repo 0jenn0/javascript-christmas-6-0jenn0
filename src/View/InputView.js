@@ -1,4 +1,5 @@
 import { Console } from "@woowacourse/mission-utils";
+import { menuBoard } from "../constants/menu.js";
 
 const InputView = {
   async readDate() {
@@ -7,9 +8,10 @@ const InputView = {
     );
     return input;
   },
+
   async readMenu() {
     const input = await Console.readLineAsync(
-      `\n주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)\n`
+      `\n주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)\n${menuBoard}\n`
     );
     return input.split(",");
   },
