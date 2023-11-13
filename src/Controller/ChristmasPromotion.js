@@ -5,40 +5,35 @@ import {
   ChristmasPromotionManager,
   OrderItem,
 } from "../Model/index.js";
-import { Console } from "@woowacourse/mission-utils";
+import executeOrRetryAsync from "../utils/executeOrRetryAsync.js";
 
 export default class ChristmasPromotion {
+  static async setupDate() {
+    const inputDate = await InputView.readDate();
+    const calendar = new Calendar(inputDate.trim());
+    const date = inputDate;
+
+    return { date, calendar };
+  }
+
+  static async setupOrderList() {
+    const ordersInput = await InputView.readMenu();
+    OrderItemValidator.validateOrder(ordersInput);
+    const orderList = ordersInput.map(
+      (orderItem) =>
+        new OrderItem(
+          orderItem.split("-")[0].trim(),
+          orderItem.split("-")[1].trim()
+        )
+    );
+    return orderList;
+  }
+
   static async start() {
     OutputView.printHello();
 
-    let date;
-    let calendar;
-    while (true) {
-      try {
-        const inputDate = await InputView.readDate();
-        calendar = new Calendar(inputDate);
-        date = inputDate;
-        break;
-      } catch (error) {
-        Console.print(error.message);
-      }
-    }
-
-    let orderList = [];
-    while (true) {
-      try {
-        const ordersInput = await InputView.readMenu();
-        OrderItemValidator.validateOrder(ordersInput);
-        ordersInput.forEach((orderItem) => {
-          orderList.push(
-            new OrderItem(orderItem.split("-")[0], orderItem.split("-")[1])
-          );
-        });
-        break;
-      } catch (error) {
-        Console.print(error.message);
-      }
-    }
+    const { date, calendar } = await executeOrRetryAsync(this.setupDate);
+    const orderList = await executeOrRetryAsync(this.setupOrderList);
 
     const totalOrderMenu = orderList.reduce((acc, orderItem) => {
       acc[orderItem.findMenuCategory()]
@@ -63,6 +58,7 @@ export default class ChristmasPromotion {
       OutputView.printExpectedPaymentAfterDiscount(totalPrice);
       OutputView.printDecemberEventBadge("없음");
     }
+    OutputView.printGiftMenu(christmasPromotionManager.runGiftMenuEvent());
 
     const discountDetail = christmasPromotionManager.fetchTotalDiscountInfo();
     OutputView.printDiscountDetails(discountDetail);

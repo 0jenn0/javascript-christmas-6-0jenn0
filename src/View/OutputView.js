@@ -31,7 +31,7 @@ const OutputView = {
   printDiscountDetails(discountDetails) {
     Console.print(`<혜택 내역>`);
     if (typeof discountDetails === "string") {
-      Console.print(`${discountDetails}\n`);
+      return Console.print(`${discountDetails}\n`);
     }
 
     discountDetails.forEach(({ eventName, discountAmount }) =>
@@ -53,6 +53,10 @@ const OutputView = {
   printDecemberEventBadge(badge) {
     Console.print(`<12월 이벤트 배지>`);
     Console.print(`${badge}\n`);
+  },
+
+  print(message) {
+    Console.print(message);
   },
 };
 
