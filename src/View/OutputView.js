@@ -42,6 +42,9 @@ const OutputView = {
 
   printTotalDiscountAmount(discounAmount) {
     Console.print(`<총혜택 금액>`);
+    if (discounAmount === 0) {
+      return Console.print(`${formatAsWon(discounAmount)}\n`);
+    }
     Console.print(`-${formatAsWon(discounAmount)}\n`);
   },
 
