@@ -32,6 +32,12 @@ const OutputView = {
   printTotalPriceBeforePromotion(price) {
     Console.print(`<할인 전 총주문 금액>`);
     Console.print(`${formatAsWon(price)}\n`);
+
+    if (price < 10_000) {
+      Console.print(
+        `[이벤트 안내] 총주문 금액 10,000원 이상부터 이벤트가 적용됩니다.\n`
+      );
+    }
   },
 
   printGiftMenu(gift) {
@@ -41,8 +47,11 @@ const OutputView = {
 
   printDiscountDetails(discountDetails) {
     Console.print(`<혜택 내역>`);
-    if (typeof discountDetails === "string") {
+    if (discountDetails === "없음") {
       return Console.print(`${discountDetails}\n`);
+    }
+    if (discountDetails.length === 0) {
+      return Console.print(`없음\n`);
     }
 
     discountDetails.forEach(({ eventName, discountAmount }) =>
@@ -66,7 +75,10 @@ const OutputView = {
 
   printDecemberEventBadge(badge) {
     Console.print(`<12월 이벤트 배지>`);
-    Console.print(`${badge}\n`);
+    Console.print(`${badge}`);
+    Console.print(
+      `(배지에 따라 2024 새해 이벤트 참여 시, 각각 다른 새해 선물을 증정할 예정입니다.)\n`
+    );
   },
 
   print(message) {
