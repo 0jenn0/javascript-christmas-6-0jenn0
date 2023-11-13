@@ -1,34 +1,8 @@
-import OrderItemValidator from "../Validator/OrderItemValidator.js";
-import { InputView, OutputView } from "../View/index.js";
-import {
-  Calendar,
-  ChristmasPromotionManager,
-  OrderItem,
-} from "../Model/index.js";
-import executeOrRetryAsync from "../utils/executeOrRetryAsync.js";
+import { OutputView } from "../View/index.js";
+import ChristmasPromotionManager from "../Service/ChristmasPromotionManager.js";
+import { PromotionInputController } from "./index.js";
 
 export default class ChristmasPromotion {
-  static async setupDate() {
-    const inputDate = await InputView.readDate();
-    const calendar = new Calendar(inputDate.trim());
-    const date = inputDate;
-
-    return { date, calendar };
-  }
-
-  static async setupOrderList() {
-    const ordersInput = await InputView.readMenu();
-    OrderItemValidator.validateOrder(ordersInput);
-    const orderList = ordersInput.map(
-      (orderItem) =>
-        new OrderItem(
-          orderItem.split("-")[0].trim(),
-          orderItem.split("-")[1].trim()
-        )
-    );
-    return orderList;
-  }
-
   static categorizeOrderItems(orderList) {
     const categorizedOrderItems = orderList.reduce((acc, orderItem) => {
       acc[orderItem.findMenuCategory()]
@@ -75,8 +49,8 @@ export default class ChristmasPromotion {
   static async start() {
     OutputView.printHello();
 
-    const { date, calendar } = await executeOrRetryAsync(this.setupDate);
-    const orderList = await executeOrRetryAsync(this.setupOrderList);
+    const { date, calendar, orderList } =
+      await PromotionInputController.initializePromotionSetup();
 
     const categorizedOrderList = this.categorizeOrderItems(orderList);
     OutputView.printMenu(categorizedOrderList);
