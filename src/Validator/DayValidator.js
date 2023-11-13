@@ -1,5 +1,5 @@
 import AppError from "../Error/AppError.js";
-import ERROR_MESSAGE from "../constants/errorMessage.js";
+import { ERROR_MESSAGE } from "../constants/index.js";
 
 export default class DayValidator {
   static validateDay(day) {

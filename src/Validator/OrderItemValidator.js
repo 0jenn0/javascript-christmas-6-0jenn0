@@ -1,8 +1,10 @@
 import AppError from "../Error/AppError.js";
-import ERROR_MESSAGE from "../constants/errorMessage.js";
-import { ORDER_CONSTRAINTS } from "../constants/eventConstants.js";
-import { MENU } from "../constants/menuConstants.js";
-import { SYMBOLS } from "../constants/symbol.js";
+import {
+  ORDER_CONSTRAINTS,
+  MENU,
+  SYMBOLS,
+  ERROR_MESSAGE,
+} from "../constants/index.js";
 
 export default class OrderItemValidator {
   static validateOrder(orderItems) {

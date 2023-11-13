@@ -1,6 +1,6 @@
-import { DDAY_EVENT } from "../../constants/eventConstants.js";
+import { DDAY_EVENT, DISCOUNT_TITLES } from "../../constants/index.js";
 
-const { START_DAY, END_DAY, START_DISCOUNT, DAILY_INCREASE } = DDAY_EVENT;
+const { START_DISCOUNT, DAILY_INCREASE } = DDAY_EVENT;
 
 export default class DdayEvent {
   #calendar;
@@ -25,7 +25,7 @@ export default class DdayEvent {
 
   fetchDiscountInformation() {
     return {
-      eventName: "크리스마스 디데이 할인",
+      discountTitle: DISCOUNT_TITLES.DDAY_DISCOUNT,
       discountAmount: this.calculateDiscounAmount(),
     };
   }

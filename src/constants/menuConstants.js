@@ -1,4 +1,4 @@
-import { deepFreeze, formatForMenuBoard } from "../utils/index.js";
+import { formatForMenuBoard, deepFreeze } from "../utils/index.js";
 
 export const MENU = deepFreeze({
   appetizer: [

@@ -1,5 +1,4 @@
-import { GIFT_EVENT } from "../../constants/eventConstants.js";
-import { MENU } from "../../constants/menuConstants.js";
+import { GIFT_EVENT, MENU, DISCOUNT_TITLES } from "../../constants/index.js";
 
 const { MIN_AMOUNT, GIFT_ITEM } = GIFT_EVENT;
 
@@ -25,7 +24,7 @@ export default class GiftMenuEvent {
 
   fetchDiscountInformation() {
     return {
-      eventName: "증정 이벤트",
+      discountTitle: DISCOUNT_TITLES.GIFT_EVENT,
       discountAmount: this.calculateDiscounAmount(),
     };
   }

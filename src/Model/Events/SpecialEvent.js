@@ -1,4 +1,4 @@
-import { SPECIAL_EVENT } from "../../constants/eventConstants.js";
+import { DISCOUNT_TITLES, SPECIAL_EVENT } from "../../constants/index.js";
 
 const { DISCOUNT_AMOUNT } = SPECIAL_EVENT;
 
@@ -22,7 +22,7 @@ export default class SpecialEvent {
 
   fetchDiscountInformation() {
     return {
-      eventName: "특별 할인",
+      discountTitle: DISCOUNT_TITLES.SPECIAL_DISCOUNT,
       discountAmount: this.calculateDiscounAmount(),
     };
   }

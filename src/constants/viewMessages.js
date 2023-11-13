@@ -1,4 +1,4 @@
-import { ORDER_CONSTRAINTS } from "./eventConstants";
+import { ORDER_CONSTRAINTS } from "./eventConstants.js";
 
 const wrapWithTitleBrackets = (title) => `<${title}>`;
 
@@ -12,6 +12,14 @@ export const TITLES = Object.freeze({
     wrapWithTitleBrackets("할인 후 예상 결제 금액"),
   DECEMBER_EVENT_BADGE: wrapWithTitleBrackets("12월 이벤트 배지"),
   MENU_CATEGORY: (category) => `--- ${category} ---`,
+});
+
+export const DISCOUNT_TITLES = Object.freeze({
+  DDAY_DISCOUNT: "크리스마스 디데이 할인",
+  WEEKDAY_DISCOUNT: "평일 할인",
+  WEEKEND_DISCOUNT: "주말 할인",
+  SPECIAL_DISCOUNT: "특별 할인",
+  GIFT_EVENT: "증정 이벤트",
 });
 
 export const MESSAGES = Object.freeze({

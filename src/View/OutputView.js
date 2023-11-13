@@ -52,8 +52,8 @@ const OutputView = {
       return Console.print(`${MESSAGES.NONE}\n`);
     }
 
-    discountDetails.forEach(({ eventName, discountAmount }) =>
-      Console.print(`${eventName}: -${formatAsWon(discountAmount)}`)
+    discountDetails.forEach(({ discountTitle, discountAmount }) =>
+      Console.print(`${discountTitle}: -${formatAsWon(discountAmount)}`)
     );
     Console.print("");
   },

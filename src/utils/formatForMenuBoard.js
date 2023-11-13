@@ -1,5 +1,5 @@
-import { MENU_CATEGORIES_KOR } from "../constants/menuConstants.js";
 import { SYMBOLS } from "../constants/symbol.js";
+import { MENU_CATEGORIES_KOR } from "../constants/menuConstants.js";
 
 export default function formatForMenuBoard(menu) {
   return Object.entries(menu)

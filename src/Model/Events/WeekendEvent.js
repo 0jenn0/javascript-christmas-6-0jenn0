@@ -1,7 +1,8 @@
 import {
   WEEKDAY_EVENT,
   WEEKEND_EVENT,
-} from "../../constants/eventConstants.js";
+  DISCOUNT_TITLES,
+} from "../../constants/index.js";
 
 export default class WeekendEvent {
   #orderItemList;
@@ -30,18 +31,18 @@ export default class WeekendEvent {
 
   fetchDiscountInformation() {
     return {
-      eventName: this.#determineEventName(),
+      discountTitle: this.#determineEventName(),
       discountAmount: this.calculateDiscounAmount(),
     };
   }
 
   #determineEventName() {
     if (this.#canOfferEvent()) {
-      const eventName = "주말 할인";
-      return eventName;
+      const discountTitle = DISCOUNT_TITLES.WEEKEND_DISCOUNT;
+      return discountTitle;
     }
-    const eventName = "평일 할인";
-    return eventName;
+    const discountTitle = DISCOUNT_TITLES.WEEKDAY_DISCOUNT;
+    return discountTitle;
   }
 
   #calculateDiscounAmountByCategory(category) {
