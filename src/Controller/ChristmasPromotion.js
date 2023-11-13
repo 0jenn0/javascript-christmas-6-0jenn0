@@ -6,19 +6,19 @@ export default class ChristmasPromotion {
   static async start() {
     OutputView.printHello();
 
-    const { date, calendar, orderList } =
+    const { visitDay, orderItemList } =
       await PromotionInputController.initializePromotionSetup();
 
     const christmasPromotionManager = new ChristmasPromotionManager(
-      orderList,
-      date
+      orderItemList,
+      visitDay
     );
 
     const promotionViewController = new PromotionViewController(
       christmasPromotionManager
     );
 
-    promotionViewController.printCategorizedMenu(orderList);
+    promotionViewController.printCategorizedMenu(orderItemList);
     promotionViewController.printPromotionSummary();
   }
 }

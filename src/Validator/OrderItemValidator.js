@@ -12,7 +12,7 @@ export default class OrderItemValidator {
   }
 
   static #validateFormat(orderItems) {
-    const pattern = /^[가-힣]+-[1-9]\d*$/;
+    const pattern = /^[가-힣]+\s*-\s*[1-9]\d*$/;
 
     if (orderItems.some((item) => !pattern.test(item.trim()))) {
       throw new AppError(ERROR_MESSAGE.invalid_format);
@@ -25,7 +25,7 @@ export default class OrderItemValidator {
       .map((item) => item.name);
 
     const isAnyNotInMenu = orderItems.some(
-      (item) => !allMenu.includes(item.split("-")[0])
+      (item) => !allMenu.includes(item.split("-")[0].trim())
     );
     if (isAnyNotInMenu) {
       throw new AppError(ERROR_MESSAGE.invalid_format);
@@ -34,7 +34,7 @@ export default class OrderItemValidator {
 
   static #validateMenuQuantity(orderItems) {
     const totalMenuQuantity = orderItems.reduce((accQuantity, orderItem) => {
-      accQuantity += Number(orderItem.split("-")[1]);
+      accQuantity += Number(orderItem.split("-")[1].trim());
       return accQuantity;
     }, 0);
 
@@ -46,7 +46,7 @@ export default class OrderItemValidator {
   static #validationDuplicateMenu(orderItems) {
     if (
       orderItems.length !==
-      new Set(orderItems.map((item) => item.split("-")[0])).size
+      new Set(orderItems.map((item) => item.split("-")[0].trim())).size
     ) {
       throw new AppError(ERROR_MESSAGE.invalid_format);
     }
@@ -56,7 +56,7 @@ export default class OrderItemValidator {
     const beverageMenu = Object.values(MENU.beverage).map((item) => item.name);
 
     const isAllBeverage = orderItems.every((item) =>
-      beverageMenu.includes(item.split("-")[0])
+      beverageMenu.includes(item.split("-")[0].trim())
     );
 
     if (isAllBeverage) {

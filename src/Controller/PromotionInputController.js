@@ -1,34 +1,34 @@
-import executeOrRetryAsync from "../utils/executeOrRetryAsync.js";
+import { executeOrRetryAsync } from "../utils/index.js";
 import { InputView } from "../View/index.js";
-import { Calendar, OrderItem } from "../Model/index.js";
-import OrderItemValidator from "../Validator/OrderItemValidator.js";
+import { OrderItem } from "../Model/index.js";
+import { OrderItemValidator, DayValidator } from "../Validator/index.js";
 
 export default class PromotionInputController {
-  static async setupDate() {
-    const inputDate = await InputView.readDate();
-    const calendar = new Calendar(inputDate.trim());
-    const date = inputDate;
+  static async setupDay() {
+    const inputVisitDay = await InputView.readDate();
+    DayValidator.validateDay(inputVisitDay);
+    const visitDay = Number(inputVisitDay);
 
-    return { date, calendar };
+    return visitDay;
   }
 
-  static async setupOrderList() {
+  static async setupOrderItemList() {
     const ordersInput = await InputView.readMenu();
     OrderItemValidator.validateOrder(ordersInput);
-    const orderList = ordersInput.map(
+    const orderItemList = ordersInput.map(
       (orderItem) =>
         new OrderItem(
           orderItem.split("-")[0].trim(),
           orderItem.split("-")[1].trim()
         )
     );
-    return orderList;
+    return orderItemList;
   }
 
   static async initializePromotionSetup() {
-    const { date, calendar } = await executeOrRetryAsync(this.setupDate);
-    const orderList = await executeOrRetryAsync(this.setupOrderList);
+    const visitDay = await executeOrRetryAsync(this.setupDay);
+    const orderItemList = await executeOrRetryAsync(this.setupOrderItemList);
 
-    return { date, calendar, orderList };
+    return { visitDay, orderItemList };
   }
 }

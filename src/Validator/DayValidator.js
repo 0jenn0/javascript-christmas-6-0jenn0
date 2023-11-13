@@ -1,4 +1,4 @@
-import AppError from "../Error/AppError";
+import AppError from "../Error/AppError.js";
 
 export default class DayValidator {
   static validateDay(day) {

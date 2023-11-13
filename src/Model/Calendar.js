@@ -1,4 +1,4 @@
-import DayValidator from "../Validator/DayValidator.js";
+import { DayValidator } from "../Validator/index.js";
 
 export default class Calendar {
   #year = 2023;
@@ -6,8 +6,7 @@ export default class Calendar {
   #day;
 
   constructor(day) {
-    DayValidator.validateDay(day);
-    this.#day = Number(day);
+    this.#day = day;
   }
 
   isPossibleDdayEvent() {
