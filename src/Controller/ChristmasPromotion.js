@@ -29,20 +29,24 @@ export default class ChristmasPromotion {
     return orderList;
   }
 
+  static categorizeOrderItems(orderList) {
+    const categorizedOrderItems = orderList.reduce((acc, orderItem) => {
+      acc[orderItem.findMenuCategory()]
+        ? acc[orderItem.findMenuCategory()].push(orderItem.getInfo())
+        : (acc[orderItem.findMenuCategory()] = [orderItem.getInfo()]);
+      return acc;
+    }, {});
+    return categorizedOrderItems;
+  }
+
   static async start() {
     OutputView.printHello();
 
     const { date, calendar } = await executeOrRetryAsync(this.setupDate);
     const orderList = await executeOrRetryAsync(this.setupOrderList);
 
-    const totalOrderMenu = orderList.reduce((acc, orderItem) => {
-      acc[orderItem.findMenuCategory()]
-        ? acc[orderItem.findMenuCategory()].push(orderItem.getInfo())
-        : (acc[orderItem.findMenuCategory()] = [orderItem.getInfo()]);
-      return acc;
-    }, {});
-
-    OutputView.printMenu(totalOrderMenu);
+    const categorizedOrderList = this.categorizeOrderItems(orderList);
+    OutputView.printMenu(categorizedOrderList);
 
     const christmasPromotionManager = new ChristmasPromotionManager(
       orderList,
