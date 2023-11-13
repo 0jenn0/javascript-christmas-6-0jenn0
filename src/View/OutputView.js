@@ -16,6 +16,11 @@ const OutputView = {
   printMenu(totalOrderMenu) {
     Console.print(`\n<주문 메뉴>`);
     Object.keys(totalOrderMenu).forEach((category) => {
+      totalOrderMenu[category].sort(
+        (beforeOrderItem, afterOrderItem) =>
+          beforeOrderItem.menuName.localeCompare(afterOrderItem.menuName),
+        "ko"
+      );
       Console.print(`--- ${MENU_CATEGORIES[category]} ---`);
       totalOrderMenu[category].forEach((orderItem) => {
         Console.print(`${orderItem.menuName} ${orderItem.quantity}개`);
