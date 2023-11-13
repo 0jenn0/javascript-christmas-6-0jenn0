@@ -18,6 +18,7 @@ export default class ChristmasPromotion {
       christmasPromotionManager
     );
 
+    OutputView.printEventPreview(visitDay);
     promotionViewController.printCategorizedMenu(orderItemList);
     promotionViewController.printPromotionSummary();
   }

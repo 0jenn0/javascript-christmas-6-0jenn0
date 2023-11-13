@@ -7,6 +7,12 @@ const OutputView = {
     Console.print("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
   },
 
+  printEventPreview(visitDay) {
+    Console.print(
+      `\n12월 ${visitDay}일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!`
+    );
+  },
+
   printMenu(totalOrderMenu) {
     Console.print(`\n<주문 메뉴>`);
     Object.keys(totalOrderMenu).forEach((category) => {
