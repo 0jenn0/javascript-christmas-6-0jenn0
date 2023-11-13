@@ -1,4 +1,8 @@
-import { DayValidator } from "../Validator/index.js";
+import {
+  DDAY_EVENT,
+  SPECIAL_EVENT,
+  WEEKEND_EVENT,
+} from "../constants/eventConstants.js";
 
 export default class Calendar {
   #year = 2023;
@@ -10,22 +14,27 @@ export default class Calendar {
   }
 
   isPossibleDdayEvent() {
-    return this.#day >= 1 && this.#day <= 25;
+    const { START_DAY, END_DAY } = DDAY_EVENT;
+    return this.#day >= START_DAY && this.#day <= END_DAY;
   }
 
   isWeekend() {
+    const { FRIDAY_INDEX, SATURDAY_INDEX } = WEEKEND_EVENT;
     const date = new Date(this.#year, this.#month - 1, this.#day);
     const dayOfWeek = date.getDay();
-    if (dayOfWeek === 5 || dayOfWeek === 6) {
+
+    if (dayOfWeek === FRIDAY_INDEX || dayOfWeek === SATURDAY_INDEX) {
       return true;
     }
     return false;
   }
 
   isSpecialDay() {
+    const { SUNDAY_INDEX, CHRISTAMAS_DAY } = SPECIAL_EVENT;
     const date = new Date(this.#year, this.#month - 1, this.#day);
     const dayOfWeek = date.getDay();
-    if (dayOfWeek === 0 || this.#day === 25) {
+
+    if (dayOfWeek === SUNDAY_INDEX || this.#day === CHRISTAMAS_DAY) {
       return true;
     }
     return false;

@@ -2,6 +2,7 @@ import { executeOrRetryAsync } from "../utils/index.js";
 import { InputView } from "../View/index.js";
 import { OrderItem } from "../Model/index.js";
 import { OrderItemValidator, DayValidator } from "../Validator/index.js";
+import { SYMBOLS } from "../constants/symbol.js";
 
 export default class PromotionInputController {
   static async setupDay() {
@@ -18,8 +19,8 @@ export default class PromotionInputController {
     const orderItemList = ordersInput.map(
       (orderItem) =>
         new OrderItem(
-          orderItem.split("-")[0].trim(),
-          orderItem.split("-")[1].trim()
+          orderItem.split(SYMBOLS.HYPHEN)[0].trim(),
+          orderItem.split(SYMBOLS.HYPHEN)[1].trim()
         )
     );
     return orderItemList;

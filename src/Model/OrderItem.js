@@ -1,4 +1,4 @@
-import { MENU } from "../constants/menu.js";
+import { MENU } from "../constants/menuConstants.js";
 
 export default class OrderItem {
   #menuName;

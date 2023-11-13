@@ -23,11 +23,18 @@ export const MENU = deepFreeze({
   ],
 });
 
-export const MENU_CATEGORIES = Object.freeze({
+export const MENU_CATEGORIES_KOR = Object.freeze({
   appetizer: "에피타이저",
   main: "메인",
   dessert: "디저트",
   beverage: "음료",
+});
+
+export const MENU_CATEGORIES = Object.freeze({
+  appetizer: "appetizer",
+  main: "main",
+  dessert: "dessert",
+  beverage: "beverage",
 });
 
 export const menuBoard = `

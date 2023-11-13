@@ -1,3 +1,15 @@
+import { BADGE_EVENT } from "../../constants/eventConstants.js";
+
+const {
+  MIN_FOR_STAR,
+  MIN_FOR_TREE,
+  MIN_FOR_SANTA,
+  STAR_REWARD,
+  TREE_REWARD,
+  SANTA_REWARD,
+  NONE_REWARD,
+} = BADGE_EVENT;
+
 export default class BadgeEvent {
   #totalPayment;
 
@@ -6,13 +18,13 @@ export default class BadgeEvent {
   }
 
   determineBadgeAward() {
-    if (this.#totalPayment >= 20_000) {
-      return "산타";
-    } else if (this.#totalPayment >= 10_000) {
-      return "트리";
-    } else if (this.#totalPayment >= 5_000) {
-      return "별";
+    if (this.#totalPayment >= MIN_FOR_SANTA) {
+      return SANTA_REWARD;
+    } else if (this.#totalPayment >= MIN_FOR_TREE) {
+      return TREE_REWARD;
+    } else if (this.#totalPayment >= MIN_FOR_STAR) {
+      return STAR_REWARD;
     }
-    return "없음";
+    return NONE_REWARD;
   }
 }

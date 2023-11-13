@@ -1,24 +1,31 @@
+import {
+  WEEKDAY_EVENT,
+  WEEKEND_EVENT,
+} from "../../constants/eventConstants.js";
+
 export default class WeekendEvent {
   #orderItemList;
-  #day;
   #calendar;
 
-  constructor(orderItemList, day, calendar) {
+  constructor(orderItemList, calendar) {
     this.#orderItemList = orderItemList;
-    this.#day = day;
     this.#calendar = calendar;
   }
 
   #canOfferEvent() {
-    const isWeekend = this.#calendar.isWeekend(this.#day);
+    const isWeekend = this.#calendar.isWeekend();
     return isWeekend;
   }
 
   calculateDiscounAmount() {
     if (this.#canOfferEvent()) {
-      return this.#calculateDiscounAmountByCategory("main");
+      return this.#calculateDiscounAmountByCategory(
+        WEEKEND_EVENT.DISCOUNT_CATEGORY
+      );
     }
-    return this.#calculateDiscounAmountByCategory("dessert");
+    return this.#calculateDiscounAmountByCategory(
+      WEEKDAY_EVENT.DISCOUNT_CATEGORY
+    );
   }
 
   fetchDiscountInformation() {
@@ -29,12 +36,11 @@ export default class WeekendEvent {
   }
 
   #determineEventName() {
-    let eventName = "";
-    if (this.#canOfferEvent) {
-      eventName = "주말 할인";
+    if (this.#canOfferEvent()) {
+      const eventName = "주말 할인";
+      return eventName;
     }
-    eventName = "평일 할인";
-
+    const eventName = "평일 할인";
     return eventName;
   }
 
@@ -49,7 +55,7 @@ export default class WeekendEvent {
       },
       0
     );
-    const discount = categoryMenuNum * 2_023;
+    const discount = categoryMenuNum * WEEKDAY_EVENT.DESSERT_DISCOUNT;
     return discount;
   }
 }

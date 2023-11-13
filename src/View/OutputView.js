@@ -1,57 +1,55 @@
 import { Console } from "@woowacourse/mission-utils";
-import { MENU_CATEGORIES } from "../constants/menu.js";
 import formatAsWon from "../utils/formatAsWon.js";
+import {
+  MESSAGES,
+  TITLES,
+  MENU_CATEGORIES_KOR,
+  ORDER_CONSTRAINTS,
+} from "../constants/index.js";
 
 const OutputView = {
   printHello() {
-    Console.print("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
+    Console.print(MESSAGES.WELCOME);
   },
 
   printEventPreview(visitDay) {
-    Console.print(
-      `\n12월 ${visitDay}일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!`
-    );
+    Console.print(`\n${MESSAGES.EVENT_PREVIEW(visitDay)}`);
   },
 
   printMenu(totalOrderMenu) {
-    Console.print(`\n<주문 메뉴>`);
+    Console.print(`\n${TITLES.ORDER_MENU}`);
     Object.keys(totalOrderMenu).forEach((category) => {
       totalOrderMenu[category].sort(
         (beforeOrderItem, afterOrderItem) =>
           beforeOrderItem.menuName.localeCompare(afterOrderItem.menuName),
         "ko"
       );
-      Console.print(`--- ${MENU_CATEGORIES[category]} ---`);
-      totalOrderMenu[category].forEach((orderItem) => {
-        Console.print(`${orderItem.menuName} ${orderItem.quantity}개`);
+      Console.print(TITLES.MENU_CATEGORY(MENU_CATEGORIES_KOR[category]));
+      totalOrderMenu[category].forEach(({ menuName, quantity }) => {
+        Console.print(MESSAGES.FORMAT_MENU_ITEM(menuName, quantity));
       });
       Console.print("");
     });
   },
 
   printTotalPriceBeforePromotion(price) {
-    Console.print(`<할인 전 총주문 금액>`);
+    Console.print(TITLES.TOTAL_PRICE_BEFORE_DISCOUNT);
     Console.print(`${formatAsWon(price)}\n`);
 
-    if (price < 10_000) {
-      Console.print(
-        `[이벤트 안내] 총주문 금액 10,000원 이상부터 이벤트가 적용됩니다.\n`
-      );
+    if (price < ORDER_CONSTRAINTS.MIN_ORDER_AMOUNT) {
+      Console.print(`${MESSAGES.EVENT_INTRO}\n`);
     }
   },
 
   printGiftMenu(gift) {
-    Console.print(`<증정 메뉴>`);
+    Console.print(TITLES.GIFT_MENU);
     Console.print(`${gift}\n`);
   },
 
   printDiscountDetails(discountDetails) {
-    Console.print(`<혜택 내역>`);
-    if (discountDetails === "없음") {
-      return Console.print(`${discountDetails}\n`);
-    }
-    if (discountDetails.length === 0) {
-      return Console.print(`없음\n`);
+    Console.print(TITLES.BENEFIT_DETAILS);
+    if (discountDetails === MESSAGES.NONE || discountDetails.length === 0) {
+      return Console.print(`${MESSAGES.NONE}\n`);
     }
 
     discountDetails.forEach(({ eventName, discountAmount }) =>
@@ -61,7 +59,7 @@ const OutputView = {
   },
 
   printTotalDiscountAmount(discounAmount) {
-    Console.print(`<총혜택 금액>`);
+    Console.print(TITLES.TOTAL_BENEFIT_AMOUNT);
     if (discounAmount === 0) {
       return Console.print(`${formatAsWon(discounAmount)}\n`);
     }
@@ -69,16 +67,14 @@ const OutputView = {
   },
 
   printExpectedPaymentAfterDiscount(expectedPayment) {
-    Console.print(`<할인 후 예상 결제 금액>`);
+    Console.print(TITLES.EXPECTED_PAYMENT_AFTER_DISCOUNT);
     Console.print(`${formatAsWon(expectedPayment)}\n`);
   },
 
   printDecemberEventBadge(badge) {
-    Console.print(`<12월 이벤트 배지>`);
-    Console.print(`${badge}`);
-    Console.print(
-      `(배지에 따라 2024 새해 이벤트 참여 시, 각각 다른 새해 선물을 증정할 예정입니다.)\n`
-    );
+    Console.print(TITLES.DECEMBER_EVENT_BADGE);
+    Console.print(badge);
+    Console.print(`${MESSAGES.NEW_YEAR_EVENT_NOTICE}\n`);
   },
 
   print(message) {

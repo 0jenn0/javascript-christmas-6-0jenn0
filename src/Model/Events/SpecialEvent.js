@@ -1,3 +1,7 @@
+import { SPECIAL_EVENT } from "../../constants/eventConstants.js";
+
+const { DISCOUNT_AMOUNT } = SPECIAL_EVENT;
+
 export default class SpecialEvent {
   #calendar;
 
@@ -11,7 +15,7 @@ export default class SpecialEvent {
 
   calculateDiscounAmount() {
     if (this.#canOfferEvent()) {
-      return 1_000;
+      return DISCOUNT_AMOUNT;
     }
     return 0;
   }

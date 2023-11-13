@@ -1,4 +1,5 @@
 import AppError from "../Error/AppError.js";
+import ERROR_MESSAGE from "../constants/errorMessage.js";
 
 export default class DayValidator {
   static validateDay(day) {
@@ -8,13 +9,13 @@ export default class DayValidator {
 
   static #validateType(day) {
     if (isNaN(day)) {
-      throw new AppError("유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+      throw new AppError(ERROR_MESSAGE.INVALID_DAY);
     }
   }
 
   static #validateRange(day) {
     if (Number(day) > 31 || Number(day) < 1) {
-      throw new AppError("유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+      throw new AppError(ERROR_MESSAGE.INVALID_DAY);
     }
   }
 }

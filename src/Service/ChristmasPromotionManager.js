@@ -7,6 +7,7 @@ import {
   SpecialEvent,
   WeekendEvent,
 } from "../Model/Events/index.js";
+import { GIFT_EVENT } from "../constants/eventConstants.js";
 
 export default class ChristmasPromotionManager {
   #orderItemList;
@@ -20,12 +21,8 @@ export default class ChristmasPromotionManager {
   }
 
   #initDiscountEvents() {
-    const dDayEvent = new DdayEvent(this.#day, this.#calendar);
-    const weekendEvent = new WeekendEvent(
-      this.#orderItemList,
-      this.#day,
-      this.#calendar
-    );
+    const dDayEvent = new DdayEvent(this.#calendar);
+    const weekendEvent = new WeekendEvent(this.#orderItemList, this.#calendar);
     const specialEvent = new SpecialEvent(this.#calendar);
     const giftMenuEvent = new GiftMenuEvent(this.calculateAllOrderPrice());
     return { dDayEvent, weekendEvent, specialEvent, giftMenuEvent };
@@ -87,10 +84,11 @@ export default class ChristmasPromotionManager {
   }
 
   runGiftMenuEvent() {
+    const { GIFT_ITEM, GIFT_ITEM_QUANTITY, NONE_GIFT } = GIFT_EVENT;
     const giftMenuEvent = new GiftMenuEvent(this.calculateAllOrderPrice());
     if (giftMenuEvent.canOfferEvent()) {
-      return "샴페인 1개";
+      return `${GIFT_ITEM} ${GIFT_ITEM_QUANTITY}개`;
     }
-    return "없음";
+    return NONE_GIFT;
   }
 }

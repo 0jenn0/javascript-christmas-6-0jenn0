@@ -1,19 +1,24 @@
+import { DDAY_EVENT } from "../../constants/eventConstants.js";
+
+const { START_DAY, END_DAY, START_DISCOUNT, DAILY_INCREASE } = DDAY_EVENT;
+
 export default class DdayEvent {
-  #day;
   #calendar;
 
-  constructor(day, calendar) {
-    this.#day = day;
+  constructor(calendar) {
     this.#calendar = calendar;
   }
 
   #canOfferEvent() {
-    return 1 <= this.#day && this.#day <= 25;
+    return this.#calendar.isPossibleDdayEvent();
   }
 
   calculateDiscounAmount() {
     if (this.#canOfferEvent()) {
-      return 1000 + 100 * this.#calendar.calculateDaysSinceFirst(this.#day);
+      return (
+        START_DISCOUNT +
+        DAILY_INCREASE * this.#calendar.calculateDaysSinceFirst()
+      );
     }
     return 0;
   }

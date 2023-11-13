@@ -1,10 +1,13 @@
+import { MENU_CATEGORIES_KOR } from "../constants/menuConstants.js";
+import { SYMBOLS } from "../constants/symbol.js";
+
 export default function formatForMenuBoard(menu) {
   return Object.entries(menu)
     .map(([category, items]) => {
       const formattedItems = items
         .map((item) => `${item.name}(${item.price.toLocaleString()})`)
-        .join(", ");
-      return `<${MENU_CATEGORIES[category]}>\n${formattedItems}`;
+        .join(SYMBOLS.COMMA_SPACE);
+      return `<${MENU_CATEGORIES_KOR[category]}>\n${formattedItems}`;
     })
     .join("\n\n");
 }

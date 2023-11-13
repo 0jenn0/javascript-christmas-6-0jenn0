@@ -1,4 +1,7 @@
-import { MENU } from "../../constants/menu.js";
+import { GIFT_EVENT } from "../../constants/eventConstants.js";
+import { MENU } from "../../constants/menuConstants.js";
+
+const { MIN_AMOUNT, GIFT_ITEM } = GIFT_EVENT;
 
 export default class GiftMenuEvent {
   #totalPayment;
@@ -8,14 +11,14 @@ export default class GiftMenuEvent {
   }
 
   canOfferEvent() {
-    return this.#totalPayment >= 120_000;
+    return this.#totalPayment >= MIN_AMOUNT;
   }
 
   calculateDiscounAmount() {
     if (this.canOfferEvent()) {
       return Object.values(MENU)
         .flat()
-        .find((item) => item.name === "샴페인").price;
+        .find((item) => item.name === GIFT_ITEM).price;
     }
     return 0;
   }
