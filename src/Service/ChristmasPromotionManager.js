@@ -1,11 +1,12 @@
-import Calendar from "./Calendar.js";
+import Calendar from "../Model/Calendar.js";
+
 import {
   BadgeEvent,
   DdayEvent,
   GiftMenuEvent,
   SpecialEvent,
   WeekendEvent,
-} from "./Events/index.js";
+} from "../Model/Events/index.js";
 
 export default class ChristmasPromotionManager {
   #orderItemList;
