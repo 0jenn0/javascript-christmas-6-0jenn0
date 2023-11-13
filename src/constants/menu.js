@@ -1,4 +1,4 @@
-import { deepFreeze } from "../utils/index.js";
+import { deepFreeze, formatForMenuBoard } from "../utils/index.js";
 
 export const MENU = deepFreeze({
   appetizer: [
@@ -30,21 +30,10 @@ export const MENU_CATEGORIES = Object.freeze({
   beverage: "음료",
 });
 
-const formatMenu = (menu) => {
-  return Object.entries(menu)
-    .map(([category, items]) => {
-      const formattedItems = items
-        .map((item) => `${item.name}(${item.price.toLocaleString()})`)
-        .join(", ");
-      return `<${MENU_CATEGORIES[category]}>\n${formattedItems}`;
-    })
-    .join("\n\n");
-};
-
 export const menuBoard = `
 <메뉴판>------------------------------------------
 
-${formatMenu(MENU)}
+${formatForMenuBoard(MENU)}
 
 -------------------------------------------------
 `;
