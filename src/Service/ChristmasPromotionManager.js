@@ -1,31 +1,31 @@
 import Calendar from "../Model/Calendar.js";
-
 import {
   BadgeEvent,
   DdayEvent,
   GiftMenuEvent,
   SpecialEvent,
-  WeekendEvent,
+  WeeklongEvent,
 } from "../Model/Events/index.js";
 import { GIFT_EVENT } from "../constants/eventConstants.js";
 
 export default class ChristmasPromotionManager {
   #orderItemList;
-  #day;
   #calendar;
 
   constructor(orderItemList, day) {
     this.#orderItemList = orderItemList;
     this.#calendar = new Calendar(day);
-    this.#day = Number(day);
   }
 
   #initDiscountEvents() {
     const dDayEvent = new DdayEvent(this.#calendar);
-    const weekendEvent = new WeekendEvent(this.#orderItemList, this.#calendar);
+    const weeklongEvent = new WeeklongEvent(
+      this.#orderItemList,
+      this.#calendar
+    );
     const specialEvent = new SpecialEvent(this.#calendar);
     const giftMenuEvent = new GiftMenuEvent(this.calculateAllOrderPrice());
-    return { dDayEvent, weekendEvent, specialEvent, giftMenuEvent };
+    return { dDayEvent, weeklongEvent, specialEvent, giftMenuEvent };
   }
 
   calculatePriceAfterPromotion() {

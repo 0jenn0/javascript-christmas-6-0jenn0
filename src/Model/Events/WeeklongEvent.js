@@ -4,7 +4,7 @@ import {
   DISCOUNT_TITLES,
 } from "../../constants/index.js";
 
-export default class WeekendEvent {
+export default class WeeklongEvent {
   #orderItemList;
   #calendar;
 
@@ -21,11 +21,13 @@ export default class WeekendEvent {
   calculateDiscounAmount() {
     if (this.#canOfferEvent()) {
       return this.#calculateDiscounAmountByCategory(
-        WEEKEND_EVENT.DISCOUNT_CATEGORY
+        WEEKEND_EVENT.DISCOUNT_CATEGORY,
+        WEEKEND_EVENT.MAIN_DISCOUNT
       );
     }
     return this.#calculateDiscounAmountByCategory(
-      WEEKDAY_EVENT.DISCOUNT_CATEGORY
+      WEEKDAY_EVENT.DISCOUNT_CATEGORY,
+      WEEKDAY_EVENT.DESSERT_DISCOUNT
     );
   }
 
@@ -45,7 +47,7 @@ export default class WeekendEvent {
     return discountTitle;
   }
 
-  #calculateDiscounAmountByCategory(category) {
+  #calculateDiscounAmountByCategory(category, discountPerMenuNum) {
     const categoryMenuNum = this.#orderItemList.reduce(
       (accMenuNum, orderItem) => {
         if (orderItem.findMenuCategory() === category) {
@@ -56,7 +58,7 @@ export default class WeekendEvent {
       },
       0
     );
-    const discount = categoryMenuNum * WEEKDAY_EVENT.DESSERT_DISCOUNT;
+    const discount = categoryMenuNum * discountPerMenuNum;
     return discount;
   }
 }
