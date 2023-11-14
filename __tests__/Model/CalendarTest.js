@@ -1,23 +1,36 @@
-import { Calendar } from "../../src/Model";
+import { Calendar } from "../../src/Model/index.js";
 
-describe("Calendar 클래스 테스트", () => {
-  test("금요일,토요일은 주말이다", () => {
-    const calendar1 = new Calendar(1);
-    const calendar2 = new Calendar(2);
-    const calendar3 = new Calendar(3);
-
-    expect(calendar1.isWeekend()).toBe(true);
-    expect(calendar2.isWeekend()).toBe(true);
-    expect(calendar3.isWeekend()).toBe(false);
+describe("Calendar 클래스", () => {
+  describe("주말 여부 판단", () => {
+    test.each([
+      [1, true],
+      [2, true],
+      [3, false],
+    ])("12월 %i일은 주말인가? %s", (day, expected) => {
+      const calendar = new Calendar(day);
+      expect(calendar.isWeekend()).toBe(expected);
+    });
   });
 
-  test("12월의 일요일과 25일은 특별 할인이 적용되는 날이다.", () => {
-    const calendar1 = new Calendar(3);
-    const calendar2 = new Calendar(25);
-    const calendar3 = new Calendar(11);
+  describe("특별 할인 적용 날짜 판단", () => {
+    test.each([
+      [3, true],
+      [25, true],
+      [11, false],
+    ])("12월 %i일은 특별 할인이 적용되는가? %s", (day, expected) => {
+      const calendar = new Calendar(day);
+      expect(calendar.isSpecialDay()).toBe(expected);
+    });
+  });
 
-    expect(calendar1.isSpecialDay()).toBe(true);
-    expect(calendar2.isSpecialDay()).toBe(true);
-    expect(calendar3.isSpecialDay()).toBe(false);
+  describe("디데이 할인 이벤트 가능 여부", () => {
+    test.each([
+      [1, true],
+      [25, true],
+      [31, false],
+    ])("12월 %i일에 디데이 할인 이벤트가 가능한가? %s", (day, expected) => {
+      const calendar = new Calendar(day);
+      expect(calendar.isPossibleDdayEvent()).toBe(expected);
+    });
   });
 });
