@@ -1,35 +1,7 @@
 import { Calendar } from "../../../src/Model";
 import { DdayEvent } from "../../../src/Model/Events";
 
-jest.mock("../../../src/Model/Calendar", () => {
-  return jest.fn().mockImplementation((day) => {
-    const date = new Date(2023, 11, day);
-    const dayOfWeek = date.getDay();
-    return {
-      isPossibleDdayEvent: () => {
-        const START_DAY = 1;
-        const END_DAY = 25;
-
-        return day >= START_DAY && day <= END_DAY;
-      },
-      isWeekend: () => {
-        if (dayOfWeek === 5 || dayOfWeek === 6) {
-          return true;
-        }
-        return false;
-      },
-      isSpecialDay: () => {
-        if (dayOfWeek === 0 || day === 25) {
-          return true;
-        }
-        return false;
-      },
-      calculateDaysSinceFirst: () => {
-        return day - 1;
-      },
-    };
-  });
-});
+jest.mock("../../../src/Model/Calendar");
 
 describe("DdayEvent 클래스 테스트", () => {
   describe("디데이 이벤트 할인금액 구하기", () => {
