@@ -1,5 +1,3 @@
-import { MENU, MENU_CATEGORIES } from "./menuConstants.js";
-
 export const DDAY_EVENT = Object.freeze({
   START_DISCOUNT: 1_000,
   DAILY_INCREASE: 100,
@@ -8,12 +6,12 @@ export const DDAY_EVENT = Object.freeze({
 });
 
 export const WEEKDAY_EVENT = Object.freeze({
-  DISCOUNT_CATEGORY: MENU_CATEGORIES.dessert,
+  DISCOUNT_CATEGORY: "dessert",
   DESSERT_DISCOUNT: 2_023,
 });
 
 export const WEEKEND_EVENT = Object.freeze({
-  DISCOUNT_CATEGORY: MENU_CATEGORIES.main,
+  DISCOUNT_CATEGORY: "main",
   MAIN_DISCOUNT: 2_023,
   FRIDAY_INDEX: 5,
   SATURDAY_INDEX: 6,
@@ -27,7 +25,7 @@ export const SPECIAL_EVENT = Object.freeze({
 
 export const GIFT_EVENT = Object.freeze({
   MIN_AMOUNT: 120_000,
-  GIFT_ITEM: MENU.beverage.find((item) => item.name === "샴페인").name,
+  GIFT_ITEM: "샴페인",
   GIFT_ITEM_QUANTITY: 1,
   NONE_GIFT: "없음",
 });
