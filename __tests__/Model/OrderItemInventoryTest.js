@@ -4,32 +4,7 @@ const formatDescription = (items) => {
   return items.map((item) => `${item[0]}-${item[1]}`).join(", ");
 };
 
-jest.mock("../../src/Model/OrderItem", () => {
-  return jest.fn().mockImplementation((name, quantity) => {
-    return {
-      calculateTotalPrice: () => {
-        const prices = {
-          티본스테이크: 55_000,
-          레드와인: 60_000,
-          해산물파스타: 35_000,
-          제로콜라: 3_000,
-        };
-        return prices[name] * quantity;
-      },
-      findMenuCategory: () => {
-        const categories = {
-          티본스테이크: "main",
-          레드와인: "beverage",
-          해산물파스타: "main",
-          제로콜라: "beverage",
-        };
-        return categories[name];
-      },
-      getQuantity: () => quantity,
-      getInfo: () => ({ menuName: name, quantity }),
-    };
-  });
-});
+jest.mock("../../src/Model/OrderItem");
 
 describe("OrderItemInventory 클래스 테스트", () => {
   describe("총 가격 구하기", () => {
