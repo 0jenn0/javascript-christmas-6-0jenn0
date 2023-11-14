@@ -2,23 +2,16 @@ import { OutputView } from "../View/index.js";
 
 export default class PromotionViewController {
   #promotionManager;
+  #orderItemInventory;
 
-  constructor(christmasPromotionManager) {
+  constructor(christmasPromotionManager, orderItemInventory) {
     this.#promotionManager = christmasPromotionManager;
+    this.#orderItemInventory = orderItemInventory;
   }
 
-  categorizeOrderItems(orderList) {
-    const categorizedOrderItems = orderList.reduce((acc, orderItem) => {
-      acc[orderItem.findMenuCategory()]
-        ? acc[orderItem.findMenuCategory()].push(orderItem.getInfo())
-        : (acc[orderItem.findMenuCategory()] = [orderItem.getInfo()]);
-      return acc;
-    }, {});
-    return categorizedOrderItems;
-  }
-
-  printCategorizedMenu(orderList) {
-    const categorizedOrderList = this.categorizeOrderItems(orderList);
+  printCategorizedMenu() {
+    const categorizedOrderList =
+      this.#orderItemInventory.categorizeOrderItems();
     OutputView.printMenu(categorizedOrderList);
   }
 
@@ -55,9 +48,14 @@ export default class PromotionViewController {
   }
 
   printPromotionSummary() {
-    const totalPrice = this.#promotionManager.calculateAllOrderPrice();
+    const totalPrice = this.#orderItemInventory.calculateTotalPayment();
     OutputView.printTotalPriceBeforePromotion(totalPrice);
 
     this.runEvent(totalPrice, this.#promotionManager);
+  }
+
+  printMenuAndSummary() {
+    this.printCategorizedMenu();
+    this.printPromotionSummary();
   }
 }

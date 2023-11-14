@@ -5,11 +5,11 @@ import {
 } from "../../constants/index.js";
 
 export default class WeeklongEvent {
-  #orderItemList;
+  #orderItemInventory;
   #calendar;
 
-  constructor(orderItemList, calendar) {
-    this.#orderItemList = orderItemList;
+  constructor(orderItemInventory, calendar) {
+    this.#orderItemInventory = orderItemInventory;
     this.#calendar = calendar;
   }
 
@@ -48,17 +48,9 @@ export default class WeeklongEvent {
   }
 
   #calculateDiscounAmountByCategory(category, discountPerMenuNum) {
-    const categoryMenuNum = this.#orderItemList.reduce(
-      (accMenuNum, orderItem) => {
-        if (orderItem.findMenuCategory() === category) {
-          accMenuNum += orderItem.getQuantity();
-          return accMenuNum;
-        }
-        return accMenuNum;
-      },
-      0
-    );
-    const discount = categoryMenuNum * discountPerMenuNum;
+    const totalQuantity =
+      this.#orderItemInventory.sumQuantityByCategory(category);
+    const discount = totalQuantity * discountPerMenuNum;
     return discount;
   }
 }

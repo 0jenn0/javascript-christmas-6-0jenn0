@@ -6,32 +6,34 @@ import {
   SpecialEvent,
   WeeklongEvent,
 } from "../Model/Events/index.js";
-import { GIFT_EVENT } from "../constants/eventConstants.js";
+import { GIFT_EVENT, ORDER_CONSTRAINTS } from "../constants/eventConstants.js";
 
 export default class ChristmasPromotionManager {
-  #orderItemList;
+  #orderItemInventory;
   #calendar;
 
-  constructor(orderItemList, day) {
-    this.#orderItemList = orderItemList;
+  constructor(orderItemInventory, day) {
+    this.#orderItemInventory = orderItemInventory;
     this.#calendar = new Calendar(day);
   }
 
   #initDiscountEvents() {
     const dDayEvent = new DdayEvent(this.#calendar);
     const weeklongEvent = new WeeklongEvent(
-      this.#orderItemList,
+      this.#orderItemInventory,
       this.#calendar
     );
     const specialEvent = new SpecialEvent(this.#calendar);
-    const giftMenuEvent = new GiftMenuEvent(this.calculateAllOrderPrice());
+    const priceBeforePromotion =
+      this.#orderItemInventory.calculateTotalPayment();
+    const giftMenuEvent = new GiftMenuEvent(priceBeforePromotion);
     return { dDayEvent, weeklongEvent, specialEvent, giftMenuEvent };
   }
 
   calculatePriceAfterPromotion() {
-    const priceBeforePromotion = this.calculateAllOrderPrice();
-
-    if (priceBeforePromotion >= 10_000) {
+    const priceBeforePromotion =
+      this.#orderItemInventory.calculateTotalPayment();
+    if (priceBeforePromotion >= ORDER_CONSTRAINTS.MIN_ORDER_AMOUNT) {
       const totalDiscount = this.#calculateTotalDiscount();
       return priceBeforePromotion - totalDiscount;
     }
@@ -59,14 +61,6 @@ export default class ChristmasPromotionManager {
     return totalDiscount;
   }
 
-  calculateAllOrderPrice() {
-    const allOrderPrice = this.#orderItemList.reduce((accPrice, orderItem) => {
-      accPrice += orderItem.calculateTotalPrice();
-      return accPrice;
-    }, 0);
-    return allOrderPrice;
-  }
-
   fetchTotalDiscountInfo() {
     const events = this.#initDiscountEvents();
     const tatalDiscountInfo = Object.values(events).reduce((acc, event) => {
@@ -79,13 +73,15 @@ export default class ChristmasPromotionManager {
   }
 
   runBadgeEvent() {
-    const badgeEvent = new BadgeEvent(this.calculateAllOrderPrice());
+    const totalPayment = this.#orderItemInventory.calculateTotalPayment();
+    const badgeEvent = new BadgeEvent(totalPayment);
     return badgeEvent.determineBadgeAward();
   }
 
   runGiftMenuEvent() {
     const { GIFT_ITEM, GIFT_ITEM_QUANTITY, NONE_GIFT } = GIFT_EVENT;
-    const giftMenuEvent = new GiftMenuEvent(this.calculateAllOrderPrice());
+    const totalPayment = this.#orderItemInventory.calculateTotalPayment();
+    const giftMenuEvent = new GiftMenuEvent(totalPayment);
     if (giftMenuEvent.canOfferEvent()) {
       return `${GIFT_ITEM} ${GIFT_ITEM_QUANTITY}개`;
     }

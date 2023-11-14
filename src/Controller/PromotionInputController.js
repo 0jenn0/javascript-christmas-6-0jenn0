@@ -3,6 +3,7 @@ import { InputView } from "../View/index.js";
 import { OrderItem } from "../Model/index.js";
 import { OrderItemValidator, DayValidator } from "../Validator/index.js";
 import { SYMBOLS } from "../constants/symbol.js";
+import OrderItemInventory from "../Model/OrderItemInventory.js";
 
 export default class PromotionInputController {
   static async setupDay() {
@@ -29,7 +30,8 @@ export default class PromotionInputController {
   static async initializePromotionSetup() {
     const visitDay = await executeOrRetryAsync(this.setupDay);
     const orderItemList = await executeOrRetryAsync(this.setupOrderItemList);
+    const orderItemInventory = new OrderItemInventory(orderItemList);
 
-    return { visitDay, orderItemList };
+    return { visitDay, orderItemInventory };
   }
 }

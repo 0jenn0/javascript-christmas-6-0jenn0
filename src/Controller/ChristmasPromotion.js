@@ -5,21 +5,20 @@ import { PromotionInputController, PromotionViewController } from "./index.js";
 export default class ChristmasPromotion {
   static async start() {
     OutputView.printHello();
-
-    const { visitDay, orderItemList } =
+    const { visitDay, orderItemInventory } =
       await PromotionInputController.initializePromotionSetup();
 
     const christmasPromotionManager = new ChristmasPromotionManager(
-      orderItemList,
+      orderItemInventory,
       visitDay
     );
 
     const promotionViewController = new PromotionViewController(
-      christmasPromotionManager
+      christmasPromotionManager,
+      orderItemInventory
     );
 
     OutputView.printEventPreview(visitDay);
-    promotionViewController.printCategorizedMenu(orderItemList);
-    promotionViewController.printPromotionSummary();
+    promotionViewController.printMenuAndSummary();
   }
 }
