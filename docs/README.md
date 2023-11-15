@@ -1,6 +1,134 @@
-## ✅ 기능 구현 목록
+![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=5&animation=twinkling&height=230&section=header&text=우아한테크코스%206기%20프리코스%204주차&desc=🎄%20크리스마스%20프로모션%20%20🎄&fontSize=35&fontAlign=50&fontAlignY=33&descSize=28&descAlign=50&descAlignY=55)
 
-### 1) 필수 구현 사항
+# 📋 목차
+
+- [📋 목차](#-목차)
+- [🎄 미션 소개](#-미션-소개)
+  - [1) 간단한 설명](#1-간단한-설명)
+  - [2) 결과물](#2-결과물)
+    - [2-1) 방문 날짜입력 받기](#2-1-방문-날짜입력-받기)
+    - [2-2) 메뉴 입력받기](#2-2-메뉴-입력받기)
+    - [2-3) 주문 메뉴 출력하기](#2-3-주문-메뉴-출력하기)
+    - [2-4) 이벤트 적용된 내역들 보여주기](#2-4-이벤트-적용된-내역들-보여주기)
+- [📦 패키지 구조](#-패키지-구조)
+  - [1) 디렉터리 구조](#1-디렉터리-구조)
+  - [2)](#2)
+  - [3) 프로젝트 구현 사항 중 주요 코드 설명](#3-프로젝트-구현-사항-중-주요-코드-설명)
+- [✅ 기능 구현 목록](#-기능-구현-목록)
+  - [1) 필수 구현 사항](#1-필수-구현-사항)
+  - [2) 개인적으로 추가하는 사항](#2-개인적으로-추가하는-사항)
+- [🧪 테스트 결과](#-테스트-결과)
+  - [1) Model](#1-model)
+  - [2) Modes/Events](#2-modesevents)
+  - [3) Validator](#3-validator)
+
+</br>
+<br/>
+
+# 🎄 미션 소개
+
+## 1) 간단한 설명
+
+- 🎄우테코 식당에서 진행하는 2023년 크리스마스 프로모션을 위한 이벤트 플래너입니다.
+- 사용자는 이 플래너를 통해 12월 중 식당 방문 날짜와 주문할 메뉴를 선택하면, 주문 메뉴, 할인 전 총주문 금액, 증정 메뉴, 혜택 내역, 총혜택 금액, 할인 후 예상 결제 금액, 12월 이벤트 배지 등을 확인할 수 있습니다.
+
+## 2) 결과물
+
+### 2-1) 방문 날짜입력 받기
+
+<!-- 내용 채우기 -->
+
+### 2-2) 메뉴 입력받기
+
+<!-- 내용 채우기 -->
+
+### 2-3) 주문 메뉴 출력하기
+
+<!-- 내용 채우기 -->
+
+### 2-4) 이벤트 적용된 내역들 보여주기
+
+<!-- 내용 채우기 -->
+
+<br/>
+<br/>
+
+# 📦 패키지 구조
+
+## 1) 디렉터리 구조
+
+```
+📦src
+ ┣ 📂constants
+ ┃ ┣ 📜errorMessage.js
+ ┃ ┣ 📜eventConstants.js
+ ┃ ┣ 📜menuConstants.js
+ ┃ ┣ 📜symbol.js
+ ┃ ┗ 📜viewMessages.js
+ ┣ 📂Controller
+ ┃ ┣ 📜ChristmasPromotion.js
+ ┃ ┣ 📜PromotionInputController.js
+ ┃ ┗ 📜PromotionViewController.js
+ ┣ 📂Error
+ ┃ ┗ 📜AppError.js
+ ┣ 📂Model
+ ┃ ┣ 📂Events
+ ┃ ┃ ┣ 📜BadgeEvent.js
+ ┃ ┃ ┣ 📜DdayEvent.js
+ ┃ ┃ ┣ 📜GiftMenuEvent.js
+ ┃ ┃ ┣ 📜SpecialEvent.js
+ ┃ ┃ ┗ 📜WeeklongEvent.js
+ ┃ ┣ 📜Calendar.js
+ ┃ ┣ 📜OrderItem.js
+ ┃ ┗ 📜OrderItemInventory.js
+ ┣ 📂Service
+ ┃ ┗ 📜ChristmasPromotionManager.js
+ ┣ 📂utils
+ ┃ ┣ 📜deepFreeze.js
+ ┃ ┣ 📜executeOrRetryAsync.js
+ ┃ ┣ 📜formatAsWon.js
+ ┃ ┗ 📜formatForMenuBoard.js
+ ┣ 📂Validator
+ ┃ ┣ 📜DayValidator.js
+ ┃ ┗ 📜OrderItemValidator.js
+ ┣ 📂View
+ ┃ ┣ 📜InputView.js
+ ┃ ┗ 📜OutputView.js
+ ┗ 📜App.js
+
+```
+
+## 2)
+
+| 모듈                   | 클래스                                                            | 책임                                               |
+| ---------------------- | ----------------------------------------------------------------- | -------------------------------------------------- |
+| 🎮 Controller          | ChristmasPromotion                                                | 프로모션의 전반적인 실행 흐름 제어                 |
+| 🎮 Controller          | PromotionSetupController                                          | 사용자 입력 수집 및 초기 설정 수행                 |
+| 🎮 Controller          | PromotionResultController                                         | 프로모션 결과 출력 제어                            |
+| 🗂️ Model               | Calendar                                                          | 날짜 관련 계산 및 검증 담당                        |
+| 🗂️ Model               | OrderItem                                                         | 개별 주문 항목의 가격 계산 및 정보 제공            |
+| 🗂️ Model               | OrderItemInventory                                                | 주문된 모든 항목의 관리 및 카테고리별 집계         |
+| 🗂️ Model</br>┗🎁Events | DdayEvent, WeeklongEvent, SpecialEvent, BadgeEvent, GiftMenuEvent | 각각의 이벤트별 할인 로직 및 혜택 정보 제공        |
+| ⚙️ Service             | ChristmasPromotionManager                                         | 주문 정보를 바탕으로 총 할인액 계산 및 이벤트 실행 |
+| 🛠️ Utils               | executeOrRetryAsync, formatAsWon, formatForMenuBoard              | 공통 기능 제공 (예외 처리, 금액 형식 포맷팅 등)    |
+| 🔍 Validator           | DayValidator, OrderItemValidator                                  | 입력 값 검증 및 예외 처리                          |
+| 🖼️ View                | InputView                                                         | 사용자로부터의 입력 받기                           |
+| 🖼️ View                | OutputView                                                        | 사용자에게 정보 출력                               |
+
+## 3) 프로젝트 구현 사항 중 주요 코드 설명
+
+- `PromotionResultController` 클래스는 사용자에게 프로모션 결과를 출력하는 책임을 지고 있습니다. 여기서는 다양한 이벤트 할인 정보를 집계하고, 최종적으로 사용자가 볼 수 있도록 출력하는 로직이 구현되어 있습니다.
+
+- `OrderItemInventory` 클래스는 주문된 모든 메뉴 항목들을 관리하며, 카테고리별로 메뉴 항목들을 집계하는 메서드 `categorizeOrderItems`를 통해 정리된 정보를 제공합니다. 또한, 총 주문 금액을 계산하는 `calculateTotalPayment` 메서드를 통해 주문 합계를 산출합니다.
+
+- `ChristmasPromotionManager` 서비스 클래스는 모든 할인 이벤트를 관리하며, 주문 정보를 바탕으로 총 할인 금액을 계산하고, 각 이벤트에 대한 실행 여부를 결정합니다. 이 클래스는 복잡한 비즈니스 로직을 캡슐화하여, 프로모션의 정확한 할인 금액을 계산하는 핵심적인 역할을 합니다.
+
+<br/>
+<br/>
+
+# ✅ 기능 구현 목록
+
+## 1) 필수 구현 사항
 
 - [x] "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다."인사 출력
 - [x] 방문하는 날짜 입력 받기
@@ -64,7 +192,7 @@
   - [x] 모든 금액은 천단위 포맷팅 + "{금액}원"형식으로 출력한다.
   - [x] 모든 에러 메시지는 "[ERROR]"로 시작한다.
 
-### 2) 개인적으로 추가하는 사항
+## 2) 개인적으로 추가하는 사항
 
 - [x] 고객에게 안내할 이벤트 주의 사항
 
@@ -83,59 +211,14 @@
 
 </br>
 
-```
-안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.
-12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)
-25
+# 🧪 테스트 결과
 
-주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)
-- 음료만 주문 시, 주문할 수 없습니다.
-- 메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.
+<!-- 내용 채우기 -->
 
-<메뉴판>------------------------------------------
-<애피타이저>
-양송이수프(6,000), 타파스(5,500), 시저샐러드(8,000)
+## 1) Model
 
-<메인>
-티본스테이크(55,000), 바비큐립(54,000), 해산물파스타(35,000), 크리스마스파스타(25,000)
+## 2) Modes/Events
 
-<디저트>
-초코케이크(15,000), 아이스크림(5,000)
+## 3) Validator
 
-<음료>
-제로콜라(3,000), 레드와인(60,000), 샴페인(25,000)
--------------------------------------------------
-
-티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1
-
-12월 25일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!
-
-<주문 메뉴>
-티본스테이크 1개
-바비큐립 1개
-초코케이크 2개
-제로콜라 1개
-
-<할인 전 총주문 금액>
-142,000원
-
-<증정 메뉴>
-샴페인 1개
-
-<혜택 내역>
-크리스마스 디데이 할인: -3,400원
-평일 할인: -4,046원
-특별 할인: -1,000원
-증정 이벤트: -25,000원
-
-<총혜택 금액>
--33,446원
-
-<할인 후 예상 결제 금액>
-133,554원
-
-<12월 이벤트 배지>
-산타
-(배지에 따라 2024 새해 이벤트 참여 시, 각각 다른 새해 선물을 증정할 예정입니다.)
-
-```
+<br/>
