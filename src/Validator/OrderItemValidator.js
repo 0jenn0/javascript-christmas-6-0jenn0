@@ -1,10 +1,10 @@
-import AppError from "../Error/AppError.js";
+import AppError from '../Error/AppError.js';
 import {
   ORDER_CONSTRAINTS,
   MENU,
   SYMBOLS,
   ERROR_MESSAGE,
-} from "../constants/index.js";
+} from '../constants/index.js';
 
 export default class OrderItemValidator {
   static validateOrder(orderItems) {
@@ -29,7 +29,7 @@ export default class OrderItemValidator {
       .map((item) => item.name);
 
     const isAnyNotInMenu = orderItems.some(
-      (item) => !allMenu.includes(item.split(SYMBOLS.HYPHEN)[0].trim())
+      (item) => !allMenu.includes(item.split(SYMBOLS.HYPHEN)[0].trim()),
     );
     if (isAnyNotInMenu) {
       throw new AppError(ERROR_MESSAGE.INVALID_FORMAT);
@@ -37,10 +37,11 @@ export default class OrderItemValidator {
   }
 
   static #validateMenuQuantity(orderItems) {
-    const totalMenuQuantity = orderItems.reduce((accQuantity, orderItem) => {
-      accQuantity += Number(orderItem.split(SYMBOLS.HYPHEN)[1].trim());
-      return accQuantity;
-    }, 0);
+    const totalMenuQuantity = orderItems.reduce(
+      (accQuantity, orderItem) =>
+        accQuantity + Number(orderItem.split(SYMBOLS.HYPHEN)[1].trim()),
+      0,
+    );
 
     if (totalMenuQuantity > ORDER_CONSTRAINTS.MAX_MENU_ITEMS) {
       throw new AppError(ERROR_MESSAGE.MENU_LIMIT_EXCEEDED);
@@ -61,7 +62,7 @@ export default class OrderItemValidator {
     const beverageMenu = Object.values(MENU.beverage).map((item) => item.name);
 
     const isAllBeverage = orderItems.every((item) =>
-      beverageMenu.includes(item.split(SYMBOLS.HYPHEN)[0].trim())
+      beverageMenu.includes(item.split(SYMBOLS.HYPHEN)[0].trim()),
     );
 
     if (isAllBeverage) {

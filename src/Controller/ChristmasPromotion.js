@@ -1,8 +1,6 @@
-import { OutputView } from "../View/index.js";
-import {
-  PromotionSetupController,
-  PromotionResultController,
-} from "./index.js";
+import { OutputView } from '../View/index';
+import PromotionSetupController from './PromotionSetupController';
+import PromotionResultController from './PromotionResultController';
 
 export default class ChristmasPromotion {
   static async start() {
@@ -13,7 +11,7 @@ export default class ChristmasPromotion {
 
     const promotionResultPresenter = new PromotionResultController(
       christmasPromotionManager,
-      orderItemInventory
+      orderItemInventory,
     );
 
     OutputView.printEventPreview(visitDay);

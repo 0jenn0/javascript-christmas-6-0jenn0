@@ -2,10 +2,11 @@ import {
   WEEKDAY_EVENT,
   WEEKEND_EVENT,
   DISCOUNT_TITLES,
-} from "../../constants/index.js";
+} from '../../constants/index.js';
 
 export default class WeeklongEvent {
   #orderItemInventory;
+
   #calendar;
 
   constructor(orderItemInventory, calendar) {

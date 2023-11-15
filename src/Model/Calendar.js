@@ -2,11 +2,13 @@ import {
   DDAY_EVENT,
   SPECIAL_EVENT,
   WEEKEND_EVENT,
-} from "../constants/eventConstants.js";
+} from '../constants/eventConstants.js';
 
 export default class Calendar {
   #year = 2023;
+
   #month = 12;
+
   #day;
 
   constructor(day) {

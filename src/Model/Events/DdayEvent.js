@@ -1,4 +1,4 @@
-import { DDAY_EVENT, DISCOUNT_TITLES } from "../../constants/index.js";
+import { DDAY_EVENT, DISCOUNT_TITLES } from '../../constants/index.js';
 
 const { START_DISCOUNT, DAILY_INCREASE } = DDAY_EVENT;
 

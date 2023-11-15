@@ -1,11 +1,11 @@
-import { Console } from "@woowacourse/mission-utils";
-import formatAsWon from "../utils/formatAsWon.js";
+import { Console } from '@woowacourse/mission-utils';
+import formatAsWon from '../utils/formatAsWon.js';
 import {
   MESSAGES,
   TITLES,
   MENU_CATEGORIES_KOR,
   ORDER_CONSTRAINTS,
-} from "../constants/index.js";
+} from '../constants/index.js';
 
 const OutputView = {
   printHello() {
@@ -22,13 +22,13 @@ const OutputView = {
       totalOrderMenu[category].sort(
         (beforeOrderItem, afterOrderItem) =>
           beforeOrderItem.menuName.localeCompare(afterOrderItem.menuName),
-        "ko"
+        'ko',
       );
       Console.print(TITLES.MENU_CATEGORY(MENU_CATEGORIES_KOR[category]));
       totalOrderMenu[category].forEach(({ menuName, quantity }) => {
         Console.print(MESSAGES.FORMAT_MENU_ITEM(menuName, quantity));
       });
-      Console.print("");
+      Console.print('');
     });
   },
 
@@ -49,21 +49,24 @@ const OutputView = {
   printDiscountDetails(discountDetails) {
     Console.print(TITLES.BENEFIT_DETAILS);
     if (discountDetails === MESSAGES.NONE || discountDetails.length === 0) {
-      return Console.print(`${MESSAGES.NONE}\n`);
+      Console.print(`${MESSAGES.NONE}\n`);
+      return;
     }
 
     discountDetails.forEach(({ discountTitle, discountAmount }) =>
-      Console.print(`${discountTitle}: -${formatAsWon(discountAmount)}`)
+      Console.print(`${discountTitle}: -${formatAsWon(discountAmount)}`),
     );
-    Console.print("");
+    Console.print('');
   },
 
-  printTotalDiscountAmount(discounAmount) {
+  printTotalDiscountAmount(discountAmount) {
     Console.print(TITLES.TOTAL_BENEFIT_AMOUNT);
-    if (discounAmount === 0) {
-      return Console.print(`${formatAsWon(discounAmount)}\n`);
+    if (discountAmount === 0) {
+      Console.print(`${formatAsWon(discountAmount)}\n`);
+      return;
     }
-    Console.print(`-${formatAsWon(discounAmount)}\n`);
+
+    Console.print(`-${formatAsWon(discountAmount)}\n`);
   },
 
   printExpectedPaymentAfterDiscount(expectedPayment) {

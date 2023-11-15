@@ -1,5 +1,5 @@
-import { Console } from "@woowacourse/mission-utils";
-import { menuBoard, MESSAGES, SYMBOLS } from "../constants/index.js";
+import { Console } from '@woowacourse/mission-utils';
+import { menuBoard, MESSAGES, SYMBOLS } from '../constants/index.js';
 
 const InputView = {
   async readDate() {

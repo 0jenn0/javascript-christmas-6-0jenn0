@@ -1,9 +1,10 @@
-import { OutputView } from "../View/index.js";
-import { ORDER_CONSTRAINTS } from "../constants/eventConstants.js";
-import { MESSAGES } from "../constants/viewMessages.js";
+import { OutputView } from '../View/index.js';
+import { ORDER_CONSTRAINTS } from '../constants/eventConstants.js';
+import { MESSAGES } from '../constants/viewMessages.js';
 
 export default class PromotionResultController {
   #promotionManager;
+
   #orderItemInventory;
 
   constructor(christmasPromotionManager, orderItemInventory) {
@@ -17,7 +18,7 @@ export default class PromotionResultController {
     OutputView.printMenu(categorizedOrderList);
   }
 
-  announceNoEvent(totalPrice) {
+  static announceNoEvent(totalPrice) {
     OutputView.printGiftMenu(MESSAGES.NONE);
     OutputView.printDiscountDetails(MESSAGES.NONE);
     OutputView.printTotalDiscountAmount(0);
@@ -25,26 +26,58 @@ export default class PromotionResultController {
     OutputView.printDecemberEventBadge(MESSAGES.NONE);
   }
 
-  announceEvent() {
-    OutputView.printGiftMenu(this.#promotionManager.runGiftMenuEvent());
+  //  announceEvent() {
+  //   OutputView.printGiftMenu(this.#promotionManager.runGiftMenuEvent());
 
+  //   const discountDetail = this.#promotionManager.fetchTotalDiscountInfo();
+  //   OutputView.printDiscountDetails(discountDetail);
+
+  //   const totalBenefitAmount = this.#promotionManager.calculateTotalBenefits();
+  //   OutputView.printTotalDiscountAmount(totalBenefitAmount);
+
+  //   const expectedPayment =
+  //     this.#promotionManager.calculatePriceAfterPromotion();
+  //   OutputView.printExpectedPaymentAfterDiscount(expectedPayment);
+
+  //   const badge = this.#promotionManager.runBadgeEvent();
+  //   OutputView.printDecemberEventBadge(badge);
+  // }
+  announceEvent() {
+    this.printEventGiftMenu();
+    this.printEventDetails();
+    this.printEventTotalBenefits();
+    this.printEventExpectedPayment();
+    this.printEventBadge();
+  }
+
+  printEventGiftMenu() {
+    OutputView.printGiftMenu(this.#promotionManager.runGiftMenuEvent());
+  }
+
+  printEventDetails() {
     const discountDetail = this.#promotionManager.fetchTotalDiscountInfo();
     OutputView.printDiscountDetails(discountDetail);
+  }
 
+  printEventTotalBenefits() {
     const totalBenefitAmount = this.#promotionManager.calculateTotalBenefits();
     OutputView.printTotalDiscountAmount(totalBenefitAmount);
+  }
 
+  printEventExpectedPayment() {
     const expectedPayment =
       this.#promotionManager.calculatePriceAfterPromotion();
     OutputView.printExpectedPaymentAfterDiscount(expectedPayment);
+  }
 
+  printEventBadge() {
     const badge = this.#promotionManager.runBadgeEvent();
     OutputView.printDecemberEventBadge(badge);
   }
 
   handleEvent(totalPrice) {
     if (totalPrice < ORDER_CONSTRAINTS.MIN_ORDER_AMOUNT) {
-      return this.announceNoEvent(totalPrice);
+      return PromotionResultController.announceNoEvent(totalPrice);
     }
     return this.announceEvent(this.#promotionManager);
   }

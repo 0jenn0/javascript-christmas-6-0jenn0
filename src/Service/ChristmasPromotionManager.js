@@ -1,15 +1,16 @@
-import Calendar from "../Model/Calendar.js";
+import Calendar from '../Model/Calendar.js';
 import {
   BadgeEvent,
   DdayEvent,
   GiftMenuEvent,
   SpecialEvent,
   WeeklongEvent,
-} from "../Model/Events/index.js";
-import { GIFT_EVENT, ORDER_CONSTRAINTS } from "../constants/eventConstants.js";
+} from '../Model/Events/index.js';
+import { GIFT_EVENT, ORDER_CONSTRAINTS } from '../constants/eventConstants.js';
 
 export default class ChristmasPromotionManager {
   #orderItemInventory;
+
   #calendar;
 
   constructor(orderItemInventory, day) {
@@ -21,7 +22,7 @@ export default class ChristmasPromotionManager {
     const dDayEvent = new DdayEvent(this.#calendar);
     const weeklongEvent = new WeeklongEvent(
       this.#orderItemInventory,
-      this.#calendar
+      this.#calendar,
     );
     const specialEvent = new SpecialEvent(this.#calendar);
     const priceBeforePromotion =
@@ -43,8 +44,7 @@ export default class ChristmasPromotionManager {
   #calculateTotalDiscount() {
     const events = this.#initDiscountEvents();
     const { giftMenuEvent, ...remainingEvents } = events;
-    const totalDiscount = this.#calculateDiscountSum(remainingEvents);
-    return totalDiscount;
+    return this.#calculateDiscountSum(remainingEvents);
   }
 
   calculateTotalBenefits() {
@@ -54,11 +54,10 @@ export default class ChristmasPromotionManager {
   }
 
   #calculateDiscountSum(events) {
-    const totalDiscount = Object.values(events).reduce((acc, event) => {
-      acc += event.calculateDiscountAmount();
-      return acc;
-    }, 0);
-    return totalDiscount;
+    return Object.values(events).reduce(
+      (totalDiscount, event) => totalDiscount + event.calculateDiscountAmount(),
+      0,
+    );
   }
 
   fetchTotalDiscountInfo() {

@@ -1,25 +1,23 @@
-import { OrderItem, OrderItemInventory } from "../../src/Model";
+import { OrderItem, OrderItemInventory } from '../../src/Model';
 
-const formatDescription = (items) => {
-  return items.map((item) => `${item[0]}-${item[1]}`).join(", ");
-};
+const formatDescription = (items) => items.map((item) => `${item[0]}-${item[1]}`).join(', ');
 
-jest.mock("../../src/Model/OrderItem");
+jest.mock('../../src/Model/OrderItem');
 
-describe("OrderItemInventory 클래스 테스트", () => {
-  describe("총 가격 구하기", () => {
+describe('OrderItemInventory 클래스 테스트', () => {
+  describe('총 가격 구하기', () => {
     const testCases = [
       {
         items: [
-          ["티본스테이크", 2],
-          ["레드와인", 1],
+          ['티본스테이크', 2],
+          ['레드와인', 1],
         ],
         expectedTotal: 170_000,
       },
       {
         items: [
-          ["해산물파스타", 2],
-          ["제로콜라", 2],
+          ['해산물파스타', 2],
+          ['제로콜라', 2],
         ],
         expectedTotal: 76_000,
       },
@@ -39,23 +37,23 @@ describe("OrderItemInventory 클래스 테스트", () => {
     });
   });
 
-  describe("카테고리 별 메뉴 개수 구하기", () => {
+  describe('카테고리 별 메뉴 개수 구하기', () => {
     const testCases = [
       {
         items: [
-          ["티본스테이크", 2],
-          ["레드와인", 1],
+          ['티본스테이크', 2],
+          ['레드와인', 1],
         ],
-        category: "main",
+        category: 'main',
         expectedQuantity: 2,
       },
       {
         items: [
-          ["해산물파스타", 3],
-          ["티본스테이크", 2],
-          ["제로콜라", 2],
+          ['해산물파스타', 3],
+          ['티본스테이크', 2],
+          ['제로콜라', 2],
         ],
-        category: "beverage",
+        category: 'beverage',
         expectedQuantity: 2,
       },
     ];
@@ -75,30 +73,30 @@ describe("OrderItemInventory 클래스 테스트", () => {
     });
   });
 
-  describe("주문 메뉴들을 카테고리 별로 분류하기", () => {
+  describe('주문 메뉴들을 카테고리 별로 분류하기', () => {
     const testCases = [
       {
         items: [
-          ["티본스테이크", 2],
-          ["레드와인", 1],
+          ['티본스테이크', 2],
+          ['레드와인', 1],
         ],
         expected: {
-          main: [{ menuName: "티본스테이크", quantity: 2 }],
-          beverage: [{ menuName: "레드와인", quantity: 1 }],
+          main: [{ menuName: '티본스테이크', quantity: 2 }],
+          beverage: [{ menuName: '레드와인', quantity: 1 }],
         },
       },
       {
         items: [
-          ["해산물파스타", 3],
-          ["티본스테이크", 2],
-          ["제로콜라", 2],
+          ['해산물파스타', 3],
+          ['티본스테이크', 2],
+          ['제로콜라', 2],
         ],
         expected: {
           main: [
-            { menuName: "해산물파스타", quantity: 3 },
-            { menuName: "티본스테이크", quantity: 2 },
+            { menuName: '해산물파스타', quantity: 3 },
+            { menuName: '티본스테이크', quantity: 2 },
           ],
-          beverage: [{ menuName: "제로콜라", quantity: 2 }],
+          beverage: [{ menuName: '제로콜라', quantity: 2 }],
         },
       },
     ];

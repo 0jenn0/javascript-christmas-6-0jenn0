@@ -1,4 +1,4 @@
-import { GIFT_EVENT, MENU, DISCOUNT_TITLES } from "../../constants/index.js";
+import { GIFT_EVENT, MENU, DISCOUNT_TITLES } from '../../constants/index.js';
 
 const { MIN_AMOUNT, GIFT_ITEM } = GIFT_EVENT;
 

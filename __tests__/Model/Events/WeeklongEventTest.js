@@ -1,17 +1,15 @@
-import { Calendar, OrderItem, OrderItemInventory } from "../../../src/Model";
-import { WeeklongEvent } from "../../../src/Model/Events";
+import { Calendar, OrderItem, OrderItemInventory } from '../../../src/Model';
+import { WeeklongEvent } from '../../../src/Model/Events';
 
-const formatDescription = (items) => {
-  return items.map((item) => `${item[0]}-${item[1]}`).join(", ");
-};
+const formatDescription = (items) => items.map((item) => `${item[0]}-${item[1]}`).join(', ');
 
-describe("WeeklongEvent 클래스 테스트", () => {
-  describe("주말에는 메인 메뉴 1개당 2,023원 할인이 된다.", () => {
+describe('WeeklongEvent 클래스 테스트', () => {
+  describe('주말에는 메인 메뉴 1개당 2,023원 할인이 된다.', () => {
     const testCase = [
       {
         orderlist: [
-          ["티본스테이크", 3],
-          ["제로콜라", 1],
+          ['티본스테이크', 3],
+          ['제로콜라', 1],
         ],
         day: 1,
         numberOfMain: 3,
@@ -19,8 +17,8 @@ describe("WeeklongEvent 클래스 테스트", () => {
       },
       {
         orderlist: [
-          ["티본스테이크", 1],
-          ["제로콜라", 1],
+          ['티본스테이크', 1],
+          ['제로콜라', 1],
         ],
         day: 2,
         numberOfMain: 1,
@@ -41,12 +39,12 @@ describe("WeeklongEvent 클래스 테스트", () => {
     });
   });
 
-  describe("평일에는 디저트 메뉴 1개당 2,023원 할인이 된다.", () => {
+  describe('평일에는 디저트 메뉴 1개당 2,023원 할인이 된다.', () => {
     const testCase = [
       {
         orderlist: [
-          ["해산물파스타", 2],
-          ["제로콜라", 1],
+          ['해산물파스타', 2],
+          ['제로콜라', 1],
         ],
         day: 3,
         numberOfdessert: 0,
@@ -54,8 +52,8 @@ describe("WeeklongEvent 클래스 테스트", () => {
       },
       {
         orderlist: [
-          ["티본스테이크", 1],
-          ["초코케이크", 2],
+          ['티본스테이크', 1],
+          ['초코케이크', 2],
         ],
         day: 4,
         numberOfdessert: 2,
@@ -77,15 +75,15 @@ describe("WeeklongEvent 클래스 테스트", () => {
     });
   });
 
-  describe("할인 이름은 평일에는 평일 할인, 주말에는 주말 할인이다.", () => {
+  describe('할인 이름은 평일에는 평일 할인, 주말에는 주말 할인이다.', () => {
     const testWeekendCase = [
       {
         orderlist: [
-          ["티본스테이크", 1],
-          ["제로콜라", 1],
+          ['티본스테이크', 1],
+          ['제로콜라', 1],
         ],
         day: 1,
-        discountName: "주말 할인",
+        discountName: '주말 할인',
       },
     ];
     testWeekendCase.forEach(({ orderlist, day, discountName }) => {
@@ -106,11 +104,11 @@ describe("WeeklongEvent 클래스 테스트", () => {
     const testWeekdayCase = [
       {
         orderlist: [
-          ["티본스테이크", 1],
-          ["제로콜라", 1],
+          ['티본스테이크', 1],
+          ['제로콜라', 1],
         ],
         day: 3,
-        discountName: "평일 할인",
+        discountName: '평일 할인',
       },
     ];
     testWeekdayCase.forEach(({ orderlist, day, discountName }) => {

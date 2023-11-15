@@ -6,37 +6,30 @@ export default class OrderItemInventory {
   }
 
   sumQuantityByCategory(category) {
-    const totalQuantity = this.#orderItemList.reduce(
-      (accMenuNum, orderItem) => {
-        if (orderItem.findMenuCategory() === category) {
-          accMenuNum += orderItem.getQuantity();
-          return accMenuNum;
-        }
-        return accMenuNum;
-      },
-      0
-    );
-    return totalQuantity;
+    return this.#orderItemList.reduce((total, orderItem) => {
+      const newTotal =
+        orderItem.findMenuCategory() === category
+          ? total + orderItem.getQuantity()
+          : total;
+      return newTotal;
+    }, 0);
   }
 
   categorizeOrderItems() {
-    const categorizedOrderItems = this.#orderItemList.reduce(
-      (acc, orderItem) => {
-        acc[orderItem.findMenuCategory()]
-          ? acc[orderItem.findMenuCategory()].push(orderItem.getInfo())
-          : (acc[orderItem.findMenuCategory()] = [orderItem.getInfo()]);
-        return acc;
-      },
-      {}
-    );
-    return categorizedOrderItems;
+    return this.#orderItemList.reduce((acc, orderItem) => {
+      const category = orderItem.findMenuCategory();
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(orderItem.getInfo());
+      return acc;
+    }, {});
   }
 
   calculateTotalPayment() {
-    const totalPayment = this.#orderItemList.reduce((accPrice, orderItem) => {
-      accPrice += orderItem.calculateTotalPrice();
-      return accPrice;
+    return this.#orderItemList.reduce((total, orderItem) => {
+      const newTotal = total + orderItem.calculateTotalPrice();
+      return newTotal;
     }, 0);
-    return totalPayment;
   }
 }

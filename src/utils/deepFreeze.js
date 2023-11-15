@@ -4,7 +4,7 @@ export default function deepFreeze(object) {
 
     if (
       property &&
-      typeof property === "object" &&
+      typeof property === 'object' &&
       !Object.isFrozen(property)
     ) {
       deepFreeze(property);

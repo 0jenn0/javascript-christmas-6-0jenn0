@@ -1,4 +1,4 @@
-import { OutputView } from "../View/index.js";
+import { OutputView } from '../View/index.js';
 
 export default async function executeOrRetryAsync(asyncFn, context) {
   try {

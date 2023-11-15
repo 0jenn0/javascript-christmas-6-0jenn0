@@ -1,7 +1,8 @@
-import { MENU } from "../constants/menuConstants.js";
+import { MENU } from '../constants/menuConstants.js';
 
 export default class OrderItem {
   #menuName;
+
   #quantity;
 
   constructor(menuName, quantity) {

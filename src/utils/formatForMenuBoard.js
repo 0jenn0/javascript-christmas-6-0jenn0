@@ -1,5 +1,5 @@
-import { SYMBOLS } from "../constants/symbol.js";
-import { MENU_CATEGORIES_KOR } from "../constants/menuConstants.js";
+import { SYMBOLS } from '../constants/symbol.js';
+import { MENU_CATEGORIES_KOR } from '../constants/menuConstants.js';
 
 export default function formatForMenuBoard(menu) {
   return Object.entries(menu)
@@ -9,5 +9,5 @@ export default function formatForMenuBoard(menu) {
         .join(SYMBOLS.COMMA_SPACE);
       return `<${MENU_CATEGORIES_KOR[category]}>\n${formattedItems}`;
     })
-    .join("\n\n");
+    .join('\n\n');
 }

@@ -1,4 +1,4 @@
-import { DISCOUNT_TITLES, SPECIAL_EVENT } from "../../constants/index.js";
+import { DISCOUNT_TITLES, SPECIAL_EVENT } from '../../constants/index.js';
 
 const { DISCOUNT_AMOUNT } = SPECIAL_EVENT;
 
