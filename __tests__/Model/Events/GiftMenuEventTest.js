@@ -10,7 +10,7 @@ describe("GiftMenuEvent 클래스 테스트", () => {
       "총금액이 %d원일 때 혜택가격은? %d원",
       (totalPayment, expected) => {
         const giftMenuEvent = new GiftMenuEvent(totalPayment);
-        expect(giftMenuEvent.calculateDiscounAmount()).toBe(expected);
+        expect(giftMenuEvent.calculateDiscountAmount()).toBe(expected);
       }
     );
 
@@ -19,7 +19,7 @@ describe("GiftMenuEvent 클래스 테스트", () => {
       "엣지케이스) 총금액이 %d원일 때 혜택가격은? %d원",
       (totalPayment, expected) => {
         const giftMenuEvent = new GiftMenuEvent(totalPayment);
-        expect(giftMenuEvent.calculateDiscounAmount()).toBe(expected);
+        expect(giftMenuEvent.calculateDiscountAmount()).toBe(expected);
       }
     );
   });

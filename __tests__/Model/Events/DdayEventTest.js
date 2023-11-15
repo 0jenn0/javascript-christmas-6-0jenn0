@@ -13,7 +13,7 @@ describe("DdayEvent 클래스 테스트", () => {
     test.each(testCase)("%d일 디데이 할인 금액? %s원", (day, expected) => {
       const calendar = new Calendar(day);
       const dDayEvent = new DdayEvent(calendar);
-      expect(dDayEvent.calculateDiscounAmount()).toBe(expected);
+      expect(dDayEvent.calculateDiscountAmount()).toBe(expected);
     });
   });
 
