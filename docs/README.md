@@ -10,6 +10,7 @@
     - [2-2) 메뉴 입력받기](#2-2-메뉴-입력받기)
     - [2-3) 주문 메뉴 출력하기](#2-3-주문-메뉴-출력하기)
     - [2-4) 이벤트 적용된 내역들 보여주기](#2-4-이벤트-적용된-내역들-보여주기)
+    - [2-5) 결과물 전체모습](#2-5-결과물-전체모습)
 - [📦 패키지 구조](#-패키지-구조)
   - [1) 디렉터리 구조](#1-디렉터리-구조)
   - [2)](#2)
@@ -17,9 +18,9 @@
 - [✅ 기능 구현 목록](#-기능-구현-목록)
   - [1) 필수 구현 사항](#1-필수-구현-사항)
   - [2) 개인적으로 추가하는 사항](#2-개인적으로-추가하는-사항)
-- [🧪 테스트 결과](#-테스트-결과)
+- [📊  테스트 결과](#-테스트-결과)
   - [1) Model](#1-model)
-  - [2) Modes/Events](#2-modesevents)
+  - [2) Modes/Events](#2-modelevents)
   - [3) Validator](#3-validator)
 
 </br>
@@ -32,31 +33,95 @@
 - 🎄우테코 식당에서 진행하는 2023년 크리스마스 프로모션을 위한 이벤트 플래너입니다.
 - 사용자는 이 플래너를 통해 12월 중 식당 방문 날짜와 주문할 메뉴를 선택하면, 주문 메뉴, 할인 전 총주문 금액, 증정 메뉴, 혜택 내역, 총혜택 금액, 할인 후 예상 결제 금액, 12월 이벤트 배지 등을 확인할 수 있습니다.
 
+</br>
+
 ## 2) 결과물
 
-### 2-1) 방문 날짜입력 받기
+<details>
+<summary><h3>2-1) 방문 날짜입력 받기</h3></summary>
+<div markdown="1">
+  
+<br/>
+<img width="640" alt="image" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/9e232f14-9352-4504-b0a6-a6382869b5e0">
 
-<!-- 내용 채우기 -->
++ 예외 사항 발생 시, 재입력을 받습니다.
+  
+</div>
+</details>
 
-### 2-2) 메뉴 입력받기
+<details>
+<summary><h3>2-2) 메뉴 입력받기</h3></summary>
+<div markdown="1">
+<img width="652" alt="image" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/61a67aa7-266e-4b0b-a4e9-7432d4d59136">
 
-<!-- 내용 채우기 -->
++ 메뉴판 보여주기를 추가하여 편하게 주문 할 수 있게 했습니다.
++ 메뉴 주문과 관련된 이벤트 주의사항을 추가했습니다.
++ 예외 사항 발생 시, 재입력을 받습니다.
+    
+</div>
+</details>
 
-### 2-3) 주문 메뉴 출력하기
+<details>
+<summary><h3>2-3) 주문 메뉴 출력하기</h3></summary>
+<div markdown="1">
+<img width="660" alt="image" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/615bf0ab-14b1-47bc-868c-d2c791d8708d">
 
-<!-- 내용 채우기 -->
++ 에피타이저 -> 메인 -> 디저트 -> 음료 순으로 출력하게 했습니다.
++ 각 카테고리별로 사전식 오름차순 정렬을 했습니다.
+</div>
+</details>
 
-### 2-4) 이벤트 적용된 내역들 보여주기
 
-<!-- 내용 채우기 -->
+<details>
+<summary><h3>2-4) 이벤트 적용된 내역들 보여주기</h3></summary>
+<div markdown="1">
+<img width="714" alt="image" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/27fe0d4f-e62e-4bab-8f69-976492853354">
+
++ 이벤트 목표 중 하나인 "12월 이벤트 참여 고객의 5%가 내년 1월 새해 이벤트에 재참여하는 것"을 달성하기 위해, 이와 관련된 안내 사항을 추가했습니다.
+  
+<br/>
+<img width="588" alt="image" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/6ebb4783-1cc8-4201-8ceb-da89be94df2f">
+
++ 총 주문 금액이 10,000원 미만일 경우 총주문 금액과 관련된 이벤트 주의사항을 출력하게했습니다.
+</div>
+</details>
+
+
+<details>
+  <summary>
+    <h3>2-5) 결과물 전체모습</h3>
+  </summary>
+  <div markdown="1">
+      <details>
+  <summary> 2-5-1) 이벤트 참여 가능한 경우</summary>
+  <div markdown="1">
+    
+  <br/>
+  <img width="691" alt="image" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/729effa4-808b-4755-a215-1a252a55c1c2">
+  
+  </div>
+  </details>
+  
+  <details>
+  <summary>2-5-2) 이벤트 참여 불가능한 경우</summary>
+  <div markdown="1">
+    
+  <br/>
+  <img width="690" alt="image" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/842cf26a-25e7-4c00-a7ad-fc37ac7352b5">
+  
+  </div>
+  </details>
+    </div>
+</details>
+
 
 <br/>
 <br/>
+
 
 # 📦 패키지 구조
 
 ## 1) 디렉터리 구조
-
 ```
 📦src
  ┣ 📂constants
@@ -98,8 +163,7 @@
 
 ```
 
-## 2)
-
+## 2) 클래스 책임
 | 모듈                   | 클래스                                                            | 책임                                               |
 | ---------------------- | ----------------------------------------------------------------- | -------------------------------------------------- |
 | 🎮 Controller          | ChristmasPromotion                                                | 프로모션의 전반적인 실행 흐름 제어                 |
@@ -202,23 +266,129 @@
     - 메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.
 
 - [x] 주문 입력 받을 때 메시지에 메뉴판 추가한다.
-- 이벤트 목표 3번: 12월 이벤트 참여 고객의 5%가 내년 1월 새해 이벤트에 재참여하는 것
 
-  - [x] 뱃지 출력후 안내사항 추가하기
+
+- [x] 뱃지 출력후 안내사항 추가하기
   - [x] "(배지에 따라 2024 새해 이벤트 참여 시, 각각 다른 새해 선물을 증정할 예정입니다.)"
 
   - [x] 주문 메뉴 출력을 애피타이저 -> 메인-> 디저트-> 음료 순으로, ㄱㄴㄷ순으로 한다.
 
 </br>
-
-# 🧪 테스트 결과
-
-<!-- 내용 채우기 -->
-
-## 1) Model
-
-## 2) Modes/Events
-
-## 3) Validator
-
 <br/>
+
+# 📊 테스트 결과
+<details>
+<summary><h2>1) Model</h2></summary>
+<div markdown="1">
+<table>
+  <tr>
+    <td colspan="3">OrderItem Test</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+ <img width="547" alt="Badge Event" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/22b16577-f7b0-40df-878e-86ceb063c866">
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="3">OrderItemInventory Test</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+  <img width="648" alt="Dday Event" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/c87c2f68-3105-49cb-a39c-4a45f8cd637e">
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="3">Calendar Test</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+  <img width="542" alt="GiftMenu Event" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/a9025b72-f5e7-40f4-a2d3-bac3c1e8617b">
+    </td>
+  </tr>
+</table>
+</div>
+</details>
+
+
+<details>
+<summary><h2>2) Model/Events</h2></summary>
+<div markdown="1">
+<table>
+
+  <tr>
+    <td colspan="3">Badge Event Test</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <img width="554" alt="Badge Event" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/367e9ef3-7cbc-467e-979b-d9132d428675">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">Dday Event Test</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <img width="560" alt="Dday Event" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/958af9d6-13dd-4709-ab38-aa459b2abaff">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">GiftMenu Event Test</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <img width="576" alt="GiftMenu Event" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/eb196fe8-3a05-431e-acd6-202936ea4dcd">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">Special Event Test</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <img width="543" alt="Special Event" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/8d686a0e-8a62-4ccc-8af8-ea56bc435951">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">Weeklong Event Test</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <img width="548" alt="Weeklong Event" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/90e6bb0b-2b7b-465a-aacd-e87883bf8006">
+    </td>
+  </tr>
+</table>
+</div>
+</details>
+
+
+
+<details>
+<summary><h2>3) Validator</h2></summary>
+<div markdown="1">
+<table>
+  <tr>
+    <td colspan="3">OrderItemValidator Test</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+<img width="595" alt="image" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/35a0f870-73d1-4406-912f-cb83d440c806">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">DayValidator Test</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+    <img width="552" alt="image" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/a62b6269-76f6-4129-971a-036ca9487897">
+    </td>
+  </tr>
+</table>
+</div>
+</details>
+
+
+
+
+
+
