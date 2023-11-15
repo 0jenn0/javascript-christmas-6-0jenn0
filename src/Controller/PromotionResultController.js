@@ -1,6 +1,8 @@
 import { OutputView } from "../View/index.js";
+import { ORDER_CONSTRAINTS } from "../constants/eventConstants.js";
+import { MESSAGES } from "../constants/viewMessages.js";
 
-export default class PromotionViewController {
+export default class PromotionResultController {
   #promotionManager;
   #orderItemInventory;
 
@@ -16,11 +18,11 @@ export default class PromotionViewController {
   }
 
   announceNoEvent(totalPrice) {
-    OutputView.printGiftMenu("없음");
-    OutputView.printDiscountDetails("없음");
+    OutputView.printGiftMenu(MESSAGES.NONE);
+    OutputView.printDiscountDetails(MESSAGES.NONE);
     OutputView.printTotalDiscountAmount(0);
     OutputView.printExpectedPaymentAfterDiscount(totalPrice);
-    OutputView.printDecemberEventBadge("없음");
+    OutputView.printDecemberEventBadge(MESSAGES.NONE);
   }
 
   announceEvent() {
@@ -40,8 +42,8 @@ export default class PromotionViewController {
     OutputView.printDecemberEventBadge(badge);
   }
 
-  runEvent(totalPrice) {
-    if (totalPrice < 10_000) {
+  handleEvent(totalPrice) {
+    if (totalPrice < ORDER_CONSTRAINTS.MIN_ORDER_AMOUNT) {
       return this.announceNoEvent(totalPrice);
     }
     return this.announceEvent(this.#promotionManager);
@@ -51,7 +53,7 @@ export default class PromotionViewController {
     const totalPrice = this.#orderItemInventory.calculateTotalPayment();
     OutputView.printTotalPriceBeforePromotion(totalPrice);
 
-    this.runEvent(totalPrice, this.#promotionManager);
+    this.handleEvent(totalPrice);
   }
 
   printMenuAndSummary() {

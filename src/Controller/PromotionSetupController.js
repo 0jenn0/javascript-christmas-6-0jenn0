@@ -4,8 +4,9 @@ import { OrderItem } from "../Model/index.js";
 import { OrderItemValidator, DayValidator } from "../Validator/index.js";
 import { SYMBOLS } from "../constants/symbol.js";
 import OrderItemInventory from "../Model/OrderItemInventory.js";
+import ChristmasPromotionManager from "../Service/ChristmasPromotionManager.js";
 
-export default class PromotionInputController {
+export default class PromotionSetupController {
   static async setupDay() {
     const inputVisitDay = await InputView.readDate();
     DayValidator.validateDay(inputVisitDay);
@@ -14,7 +15,7 @@ export default class PromotionInputController {
     return visitDay;
   }
 
-  static async setupOrderItemList() {
+  static async setupOrderItemInventory() {
     const ordersInput = await InputView.readMenu();
     OrderItemValidator.validateOrder(ordersInput);
     const orderItemList = ordersInput.map(
@@ -24,14 +25,21 @@ export default class PromotionInputController {
           orderItem.split(SYMBOLS.HYPHEN)[1].trim()
         )
     );
-    return orderItemList;
+    const orderItemInventory = new OrderItemInventory(orderItemList);
+    return orderItemInventory;
   }
 
   static async initializePromotionSetup() {
     const visitDay = await executeOrRetryAsync(this.setupDay);
-    const orderItemList = await executeOrRetryAsync(this.setupOrderItemList);
-    const orderItemInventory = new OrderItemInventory(orderItemList);
+    const orderItemInventory = await executeOrRetryAsync(
+      this.setupOrderItemInventory
+    );
 
-    return { visitDay, orderItemInventory };
+    const christmasPromotionManager = new ChristmasPromotionManager(
+      orderItemInventory,
+      visitDay
+    );
+
+    return { visitDay, orderItemInventory, christmasPromotionManager };
   }
 }

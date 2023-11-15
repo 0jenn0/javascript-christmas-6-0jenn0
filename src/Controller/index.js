@@ -1,3 +1,3 @@
 export { default as ChristmasPromotion } from "./ChristmasPromotion.js";
-export { default as PromotionInputController } from "./PromotionInputController.js";
-export { default as PromotionViewController } from "./PromotionViewController.js";
+export { default as PromotionSetupController } from "./PromotionSetupController.js";
+export { default as PromotionResultController } from "./PromotionResultController.js";
