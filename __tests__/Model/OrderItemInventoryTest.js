@@ -1,6 +1,7 @@
 import { OrderItem, OrderItemInventory } from '../../src/Model';
 
-const formatDescription = (items) => items.map((item) => `${item[0]}-${item[1]}`).join(', ');
+const formatDescription = (items) =>
+  items.map((item) => `${item[0]}-${item[1]}`).join(', ');
 
 jest.mock('../../src/Model/OrderItem');
 
@@ -26,7 +27,7 @@ describe('OrderItemInventory 클래스 테스트', () => {
       const description = formatDescription(items);
       test(`${description}의 총 가격은? ${expectedTotal}원`, () => {
         const mockedOrderItems = items.map(
-          (item) => new OrderItem(item[0], item[1])
+          (item) => new OrderItem(item[0], item[1]),
         );
         const orderItemInventory = new OrderItemInventory(mockedOrderItems);
 
@@ -61,7 +62,7 @@ describe('OrderItemInventory 클래스 테스트', () => {
       const description = formatDescription(items);
       test(`${description}에서 ${category}의 개수는? ${expectedQuantity}개`, () => {
         const mockedOrderItems = items.map(
-          (item) => new OrderItem(item[0], item[1])
+          (item) => new OrderItem(item[0], item[1]),
         );
         const orderItemInventory = new OrderItemInventory(mockedOrderItems);
 
@@ -105,7 +106,7 @@ describe('OrderItemInventory 클래스 테스트', () => {
 
       test(`${description}을 카테고리별로 분류하기`, () => {
         const mockedOrderItems = items.map(
-          (item) => new OrderItem(item[0], item[1])
+          (item) => new OrderItem(item[0], item[1]),
         );
         const orderItemInventory = new OrderItemInventory(mockedOrderItems);
 

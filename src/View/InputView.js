@@ -9,7 +9,7 @@ const InputView = {
 
   async readMenu() {
     const input = await Console.readLineAsync(
-      `\n${MESSAGES.READ_MENU}\n${menuBoard}\n`
+      `\n${MESSAGES.READ_MENU}\n${menuBoard}\n`,
     );
     return input.split(SYMBOLS.COMMA);
   },

@@ -14,7 +14,7 @@ describe('BadgeEvent 클래스 테스트', () => {
         const badge = badgeEvent.determineBadgeAward();
 
         expect(badge).toBe(expected);
-      }
+      },
     );
 
     const testCase = [
@@ -30,7 +30,7 @@ describe('BadgeEvent 클래스 테스트', () => {
         const badge = badgeEvent.determineBadgeAward();
 
         expect(badge).toBe(expected);
-      }
+      },
     );
   });
 });

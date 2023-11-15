@@ -11,7 +11,7 @@ describe('GiftMenuEvent 클래스 테스트', () => {
       (totalPayment, expected) => {
         const giftMenuEvent = new GiftMenuEvent(totalPayment);
         expect(giftMenuEvent.calculateDiscountAmount()).toBe(expected);
-      }
+      },
     );
 
     const testEdgeCase = [[120_000, 25_000]];
@@ -20,7 +20,7 @@ describe('GiftMenuEvent 클래스 테스트', () => {
       (totalPayment, expected) => {
         const giftMenuEvent = new GiftMenuEvent(totalPayment);
         expect(giftMenuEvent.calculateDiscountAmount()).toBe(expected);
-      }
+      },
     );
   });
 
@@ -34,12 +34,12 @@ describe('GiftMenuEvent 클래스 테스트', () => {
       (totalPayment, expected) => {
         const giftMenuEvent = new GiftMenuEvent(totalPayment);
         expect(giftMenuEvent.fetchDiscountInformation().discountTitle).toBe(
-          '증정 이벤트'
+          '증정 이벤트',
         );
         expect(giftMenuEvent.fetchDiscountInformation().discountAmount).toEqual(
-          expected
+          expected,
         );
-      }
+      },
     );
   });
 });

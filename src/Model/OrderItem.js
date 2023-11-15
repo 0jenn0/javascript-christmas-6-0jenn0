@@ -19,7 +19,7 @@ export default class OrderItem {
 
   findMenuCategory() {
     return Object.keys(MENU).find((category) =>
-      MENU[category].some((item) => item.name === this.#menuName)
+      MENU[category].some((item) => item.name === this.#menuName),
     );
   }
 

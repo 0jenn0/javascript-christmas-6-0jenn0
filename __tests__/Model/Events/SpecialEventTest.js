@@ -22,7 +22,7 @@ describe('SpecialEvent 클래스 테스트', () => {
         const calendar = new Calendar(day);
         const specialEvent = new SpecialEvent(calendar);
         expect(specialEvent.calculateDiscountAmount()).toBe(expected);
-      }
+      },
     );
   });
 
@@ -37,12 +37,12 @@ describe('SpecialEvent 클래스 테스트', () => {
         const calendar = new Calendar(day);
         const specialEvent = new SpecialEvent(calendar);
         expect(specialEvent.fetchDiscountInformation().discountTitle).toBe(
-          '특별 할인'
+          '특별 할인',
         );
         expect(specialEvent.fetchDiscountInformation().discountAmount).toEqual(
-          expected
+          expected,
         );
-      }
+      },
     );
   });
 });

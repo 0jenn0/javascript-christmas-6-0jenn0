@@ -20,9 +20,11 @@ export default class BadgeEvent {
   determineBadgeAward() {
     if (this.#totalPayment >= MIN_FOR_SANTA) {
       return SANTA_REWARD;
-    } if (this.#totalPayment >= MIN_FOR_TREE) {
+    }
+    if (this.#totalPayment >= MIN_FOR_TREE) {
       return TREE_REWARD;
-    } if (this.#totalPayment >= MIN_FOR_STAR) {
+    }
+    if (this.#totalPayment >= MIN_FOR_STAR) {
       return STAR_REWARD;
     }
     return NONE_REWARD;

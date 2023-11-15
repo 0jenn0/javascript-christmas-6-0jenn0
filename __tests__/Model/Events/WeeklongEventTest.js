@@ -1,7 +1,8 @@
 import { Calendar, OrderItem, OrderItemInventory } from '../../../src/Model';
 import { WeeklongEvent } from '../../../src/Model/Events';
 
-const formatDescription = (items) => items.map((item) => `${item[0]}-${item[1]}`).join(', ');
+const formatDescription = (items) =>
+  items.map((item) => `${item[0]}-${item[1]}`).join(', ');
 
 describe('WeeklongEvent 클래스 테스트', () => {
   describe('주말에는 메인 메뉴 1개당 2,023원 할인이 된다.', () => {
@@ -28,7 +29,7 @@ describe('WeeklongEvent 클래스 테스트', () => {
     testCase.forEach(({ orderlist, day, numberOfMain, expected }) => {
       test(`메인 메뉴 개수가 ${numberOfMain}개 일 때 주말 할인 금액은? ${expected}원`, () => {
         const orderItemlist = orderlist.map(
-          (order) => new OrderItem(order[0], order[1])
+          (order) => new OrderItem(order[0], order[1]),
         );
         const calendar = new Calendar(day);
         const orderItemInventory = new OrderItemInventory(orderItemlist);
@@ -64,7 +65,7 @@ describe('WeeklongEvent 클래스 테스트', () => {
     testCase.forEach(({ orderlist, day, numberOfdessert, expected }) => {
       test(`디저트 메뉴 개수가 ${numberOfdessert}개 일 때 평일 할인 금액은? ${expected}원`, () => {
         const orderItemlist = orderlist.map(
-          (order) => new OrderItem(order[0], order[1])
+          (order) => new OrderItem(order[0], order[1]),
         );
         const calendar = new Calendar(day);
         const orderItemInventory = new OrderItemInventory(orderItemlist);
@@ -89,14 +90,14 @@ describe('WeeklongEvent 클래스 테스트', () => {
     testWeekendCase.forEach(({ orderlist, day, discountName }) => {
       test(`${day}일은 주말이고, 할인 이름은 "${discountName}"이다.`, () => {
         const orderItemlist = orderlist.map(
-          (menuName, quantity) => new OrderItem(menuName, quantity)
+          (menuName, quantity) => new OrderItem(menuName, quantity),
         );
         const calendar = new Calendar(day);
         const orderItemInventory = new OrderItemInventory(orderItemlist);
         const weeklongEvent = new WeeklongEvent(orderItemInventory, calendar);
 
         expect(weeklongEvent.fetchDiscountInformation().discountTitle).toBe(
-          discountName
+          discountName,
         );
       });
     });
@@ -114,14 +115,14 @@ describe('WeeklongEvent 클래스 테스트', () => {
     testWeekdayCase.forEach(({ orderlist, day, discountName }) => {
       test(`${day}일은 평일이고, 할인 이름은 "${discountName}"이다.`, () => {
         const orderItemlist = orderlist.map(
-          (menuName, quantity) => new OrderItem(menuName, quantity)
+          (menuName, quantity) => new OrderItem(menuName, quantity),
         );
         const calendar = new Calendar(day);
         const orderItemInventory = new OrderItemInventory(orderItemlist);
         const weeklongEvent = new WeeklongEvent(orderItemInventory, calendar);
 
         expect(weeklongEvent.fetchDiscountInformation().discountTitle).toBe(
-          discountName
+          discountName,
         );
       });
     });

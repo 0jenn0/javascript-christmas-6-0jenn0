@@ -23,12 +23,12 @@ export default class WeeklongEvent {
     if (this.#canOfferEvent()) {
       return this.#calculateDiscountAmountByCategory(
         WEEKEND_EVENT.DISCOUNT_CATEGORY,
-        WEEKEND_EVENT.MAIN_DISCOUNT
+        WEEKEND_EVENT.MAIN_DISCOUNT,
       );
     }
     return this.#calculateDiscountAmountByCategory(
       WEEKDAY_EVENT.DISCOUNT_CATEGORY,
-      WEEKDAY_EVENT.DESSERT_DISCOUNT
+      WEEKDAY_EVENT.DESSERT_DISCOUNT,
     );
   }
 
