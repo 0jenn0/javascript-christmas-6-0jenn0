@@ -9,6 +9,7 @@ describe('DdayEvent 클래스 테스트', () => {
       [1, 1_000],
       [2, 1_100],
       [25, 3_400],
+      [31, 0],
     ];
     test.each(testCase)('%d일 디데이 할인 금액? %s원', (day, expected) => {
       const calendar = new Calendar(day);
@@ -29,12 +30,12 @@ describe('DdayEvent 클래스 테스트', () => {
         const calendar = new Calendar(day);
         const dDayEvent = new DdayEvent(calendar);
         expect(dDayEvent.fetchDiscountInformation().discountTitle).toBe(
-          '크리스마스 디데이 할인'
+          '크리스마스 디데이 할인',
         );
         expect(dDayEvent.fetchDiscountInformation().discountAmount).toEqual(
-          expected
+          expected,
         );
-      }
+      },
     );
   });
 });
