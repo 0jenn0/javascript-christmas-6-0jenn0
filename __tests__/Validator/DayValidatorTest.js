@@ -14,6 +14,12 @@ describe('DayValidator 클래스 테스트', () => {
     expect(() => DayValidator.validateDay(input)).toThrow(AppError.PREFIX);
   });
 
+  test('예외 케이스) 공백은 입력 할 수 없다.', () => {
+    const input = '';
+
+    expect(() => DayValidator.validateDay(input)).toThrow(AppError.PREFIX);
+  });
+
   test('엣지 케이스) 날짜는 1이상 31이하의 숫자여야한다.', () => {
     const inputMin = '1';
     const inputMax = '31';
