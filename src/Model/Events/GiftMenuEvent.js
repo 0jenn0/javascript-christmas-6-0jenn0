@@ -13,7 +13,7 @@ export default class GiftMenuEvent {
     return this.#totalPayment >= MIN_AMOUNT;
   }
 
-  calculateDiscounAmount() {
+  calculateDiscountAmount() {
     if (this.canOfferEvent()) {
       return Object.values(MENU)
         .flat()
@@ -25,7 +25,7 @@ export default class GiftMenuEvent {
   fetchDiscountInformation() {
     return {
       discountTitle: DISCOUNT_TITLES.GIFT_EVENT,
-      discountAmount: this.calculateDiscounAmount(),
+      discountAmount: this.calculateDiscountAmount(),
     };
   }
 }

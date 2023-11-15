@@ -55,7 +55,7 @@ export default class ChristmasPromotionManager {
 
   #calculateDiscountSum(events) {
     const totalDiscount = Object.values(events).reduce((acc, event) => {
-      acc += event.calculateDiscounAmount();
+      acc += event.calculateDiscountAmount();
       return acc;
     }, 0);
     return totalDiscount;
@@ -64,7 +64,7 @@ export default class ChristmasPromotionManager {
   fetchTotalDiscountInfo() {
     const events = this.#initDiscountEvents();
     const tatalDiscountInfo = Object.values(events).reduce((acc, event) => {
-      if (event.calculateDiscounAmount() !== 0) {
+      if (event.calculateDiscountAmount() !== 0) {
         acc.push(event.fetchDiscountInformation());
       }
       return acc;

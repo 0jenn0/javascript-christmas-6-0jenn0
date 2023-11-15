@@ -18,14 +18,14 @@ export default class WeeklongEvent {
     return isWeekend;
   }
 
-  calculateDiscounAmount() {
+  calculateDiscountAmount() {
     if (this.#canOfferEvent()) {
-      return this.#calculateDiscounAmountByCategory(
+      return this.#calculateDiscountAmountByCategory(
         WEEKEND_EVENT.DISCOUNT_CATEGORY,
         WEEKEND_EVENT.MAIN_DISCOUNT
       );
     }
-    return this.#calculateDiscounAmountByCategory(
+    return this.#calculateDiscountAmountByCategory(
       WEEKDAY_EVENT.DISCOUNT_CATEGORY,
       WEEKDAY_EVENT.DESSERT_DISCOUNT
     );
@@ -34,7 +34,7 @@ export default class WeeklongEvent {
   fetchDiscountInformation() {
     return {
       discountTitle: this.#determineEventName(),
-      discountAmount: this.calculateDiscounAmount(),
+      discountAmount: this.calculateDiscountAmount(),
     };
   }
 
@@ -47,7 +47,7 @@ export default class WeeklongEvent {
     return discountTitle;
   }
 
-  #calculateDiscounAmountByCategory(category, discountPerMenuNum) {
+  #calculateDiscountAmountByCategory(category, discountPerMenuNum) {
     const totalQuantity =
       this.#orderItemInventory.sumQuantityByCategory(category);
     const discount = totalQuantity * discountPerMenuNum;

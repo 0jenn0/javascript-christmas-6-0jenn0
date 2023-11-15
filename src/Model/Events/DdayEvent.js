@@ -13,7 +13,7 @@ export default class DdayEvent {
     return this.#calendar.isPossibleDdayEvent();
   }
 
-  calculateDiscounAmount() {
+  calculateDiscountAmount() {
     if (this.#canOfferEvent()) {
       return (
         START_DISCOUNT +
@@ -26,7 +26,7 @@ export default class DdayEvent {
   fetchDiscountInformation() {
     return {
       discountTitle: DISCOUNT_TITLES.DDAY_DISCOUNT,
-      discountAmount: this.calculateDiscounAmount(),
+      discountAmount: this.calculateDiscountAmount(),
     };
   }
 }
