@@ -1,4 +1,8 @@
+<div align="center">
+  
 ![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=5&animation=twinkling&height=230&section=header&text=우아한테크코스%206기%20프리코스%204주차&desc=🎄%20크리스마스%20프로모션%20%20🎄&fontSize=35&fontAlign=50&fontAlignY=33&descSize=28&descAlign=50&descAlignY=55)
+
+</div>
 
 # 📋 목차
 
@@ -6,22 +10,13 @@
 - [🎄 미션 소개](#-미션-소개)
   - [1) 간단한 설명](#1-간단한-설명)
   - [2) 결과물](#2-결과물)
-    - [2-1) 방문 날짜입력 받기](#2-1-방문-날짜입력-받기)
-    - [2-2) 메뉴 입력받기](#2-2-메뉴-입력받기)
-    - [2-3) 주문 메뉴 출력하기](#2-3-주문-메뉴-출력하기)
-    - [2-4) 이벤트 적용된 내역들 보여주기](#2-4-이벤트-적용된-내역들-보여주기)
-    - [2-5) 결과물 전체모습](#2-5-결과물-전체모습)
 - [📦 패키지 구조](#-패키지-구조)
   - [1) 디렉터리 구조](#1-디렉터리-구조)
-  - [2)](#2)
-  - [3) 프로젝트 구현 사항 중 주요 코드 설명](#3-프로젝트-구현-사항-중-주요-코드-설명)
+  - [2) 클래스 책임](#2-클래스-책임)
 - [✅ 기능 구현 목록](#-기능-구현-목록)
   - [1) 필수 구현 사항](#1-필수-구현-사항)
   - [2) 개인적으로 추가하는 사항](#2-개인적으로-추가하는-사항)
-- [📊  테스트 결과](#-테스트-결과)
-  - [1) Model](#1-model)
-  - [2) Modes/Events](#2-modelevents)
-  - [3) Validator](#3-validator)
+- [📊 테스트 결과](#-테스트-결과)
 
 </br>
 <br/>
@@ -31,7 +26,8 @@
 ## 1) 간단한 설명
 
 - 🎄우테코 식당에서 진행하는 2023년 크리스마스 프로모션을 위한 이벤트 플래너입니다.
-- 사용자는 이 플래너를 통해 12월 중 식당 방문 날짜와 주문할 메뉴를 선택하면, 주문 메뉴, 할인 전 총주문 금액, 증정 메뉴, 혜택 내역, 총혜택 금액, 할인 후 예상 결제 금액, 12월 이벤트 배지 등을 확인할 수 있습니다.
+- 사용자는 이 플래너를 통해 12월 중 식당 방문 날짜와 주문할 메뉴를 입력합니다.
+- 주문 메뉴, 할인 전 총주문 금액, 증정 메뉴, 혜택 내역, 총혜택 금액, 할인 후 예상 결제 금액, 12월 이벤트 배지 등을 확인할 수 있습니다.
 
 </br>
 
@@ -44,8 +40,8 @@
 <br/>
 <img width="640" alt="image" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/9e232f14-9352-4504-b0a6-a6382869b5e0">
 
-+ 예외 사항 발생 시, 재입력을 받습니다.
-  
+- 예외 사항 발생 시, 재입력을 받습니다.
+
 </div>
 </details>
 
@@ -54,10 +50,10 @@
 <div markdown="1">
 <img width="652" alt="image" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/61a67aa7-266e-4b0b-a4e9-7432d4d59136">
 
-+ 메뉴판 보여주기를 추가하여 편하게 주문 할 수 있게 했습니다.
-+ 메뉴 주문과 관련된 이벤트 주의사항을 추가했습니다.
-+ 예외 사항 발생 시, 재입력을 받습니다.
-    
+- 메뉴판 보여주기를 추가하여 편하게 주문 할 수 있게 했습니다.
+- 메뉴 주문과 관련된 이벤트 주의사항을 추가했습니다.
+- 예외 사항 발생 시, 재입력을 받습니다.
+
 </div>
 </details>
 
@@ -66,26 +62,24 @@
 <div markdown="1">
 <img width="660" alt="image" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/615bf0ab-14b1-47bc-868c-d2c791d8708d">
 
-+ 에피타이저 -> 메인 -> 디저트 -> 음료 순으로 출력하게 했습니다.
-+ 각 카테고리별로 사전식 오름차순 정렬을 했습니다.
+- 에피타이저 -> 메인 -> 디저트 -> 음료 순으로 출력하게 했습니다.
+- 각 카테고리별로 사전식 오름차순 정렬을 했습니다.
 </div>
 </details>
-
 
 <details>
 <summary><h3>2-4) 이벤트 적용된 내역들 보여주기</h3></summary>
 <div markdown="1">
 <img width="714" alt="image" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/27fe0d4f-e62e-4bab-8f69-976492853354">
 
-+ 이벤트 목표 중 하나인 "12월 이벤트 참여 고객의 5%가 내년 1월 새해 이벤트에 재참여하는 것"을 달성하기 위해, 이와 관련된 안내 사항을 추가했습니다.
-  
+- 이벤트 목표 중 하나인 "12월 이벤트 참여 고객의 5%가 내년 1월 새해 이벤트에 재참여하는 것"을 달성하기 위해, 이와 관련된 안내 사항을 추가했습니다.
+
 <br/>
 <img width="588" alt="image" src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/6ebb4783-1cc8-4201-8ceb-da89be94df2f">
 
-+ 총 주문 금액이 10,000원 미만일 경우 총주문 금액과 관련된 이벤트 주의사항을 출력하게했습니다.
+- 총 주문 금액이 10,000원 미만일 경우 총주문 금액과 관련된 이벤트 주의사항을 출력하게했습니다.
 </div>
 </details>
-
 
 <details>
   <summary>
@@ -114,14 +108,13 @@
     </div>
 </details>
 
-
 <br/>
 <br/>
-
 
 # 📦 패키지 구조
 
 ## 1) 디렉터리 구조
+
 ```
 📦src
  ┣ 📂constants
@@ -164,6 +157,7 @@
 ```
 
 ## 2) 클래스 책임
+
 | 모듈                   | 클래스                                                            | 책임                                               |
 | ---------------------- | ----------------------------------------------------------------- | -------------------------------------------------- |
 | 🎮 Controller          | ChristmasPromotion                                                | 프로모션의 전반적인 실행 흐름 제어                 |
@@ -172,20 +166,17 @@
 | 🗂️ Model               | Calendar                                                          | 날짜 관련 계산 및 검증 담당                        |
 | 🗂️ Model               | OrderItem                                                         | 개별 주문 항목의 가격 계산 및 정보 제공            |
 | 🗂️ Model               | OrderItemInventory                                                | 주문된 모든 항목의 관리 및 카테고리별 집계         |
-| 🗂️ Model</br>┗🎁Events | DdayEvent, WeeklongEvent, SpecialEvent, BadgeEvent, GiftMenuEvent | 각각의 이벤트별 할인 로직 및 혜택 정보 제공        |
+| 🗂️ Model</br>┗🎁Events | DdayEvent</br> WeeklongEvent</br> SpecialEvent</br> BadgeEvent</br> GiftMenuEvent | 각각의 이벤트별 할인 로직 및 혜택 정보 제공        |
 | ⚙️ Service             | ChristmasPromotionManager                                         | 주문 정보를 바탕으로 총 할인액 계산 및 이벤트 실행 |
-| 🛠️ Utils               | executeOrRetryAsync, formatAsWon, formatForMenuBoard              | 공통 기능 제공 (예외 처리, 금액 형식 포맷팅 등)    |
-| 🔍 Validator           | DayValidator, OrderItemValidator                                  | 입력 값 검증 및 예외 처리                          |
+| 🛠️ Utils               | executeOrRetryAsync</br> formatAsWon</br> formatForMenuBoard              | 공통 기능 제공 (예외 처리, 금액 형식 포맷팅 등)    |
+| 🔍 Validator           | DayValidator</br> OrderItemValidator                                  | 입력 값 검증 및 예외 처리                          |
 | 🖼️ View                | InputView                                                         | 사용자로부터의 입력 받기                           |
 | 🖼️ View                | OutputView                                                        | 사용자에게 정보 출력                               |
 
-## 3) 프로젝트 구현 사항 중 주요 코드 설명
+|flow chart|
+|------|
+|<img src="https://github.com/0jenn0/javascript-christmas-6-0jenn0/assets/130737187/4e133323-ad81-4c5f-9348-68715c5634eb" width="700px"/>|
 
-- `PromotionResultController` 클래스는 사용자에게 프로모션 결과를 출력하는 책임을 지고 있습니다. 여기서는 다양한 이벤트 할인 정보를 집계하고, 최종적으로 사용자가 볼 수 있도록 출력하는 로직이 구현되어 있습니다.
-
-- `OrderItemInventory` 클래스는 주문된 모든 메뉴 항목들을 관리하며, 카테고리별로 메뉴 항목들을 집계하는 메서드 `categorizeOrderItems`를 통해 정리된 정보를 제공합니다. 또한, 총 주문 금액을 계산하는 `calculateTotalPayment` 메서드를 통해 주문 합계를 산출합니다.
-
-- `ChristmasPromotionManager` 서비스 클래스는 모든 할인 이벤트를 관리하며, 주문 정보를 바탕으로 총 할인 금액을 계산하고, 각 이벤트에 대한 실행 여부를 결정합니다. 이 클래스는 복잡한 비즈니스 로직을 캡슐화하여, 프로모션의 정확한 할인 금액을 계산하는 핵심적인 역할을 합니다.
 
 <br/>
 <br/>
@@ -221,7 +212,7 @@
 
 - [x] 증정 메뉴 출력하기
 
-  - [x] 할인 전 총주문 금액이 12만원 이상일 경우 샴폐인 1개 증정
+  - [x] 할인 전 총주문 금액이 12만원 이상일 경우 샴페인 1개 증정
   - [x] 없을 경우 "없음" 출력한다.
 
 - [x] 혜택 내역 출력하기
@@ -242,10 +233,10 @@
     - [x] 증정 이벤트 할인 금액 계산하기
 
 - [x] 총혜택 금액 출력하기
-  - [x] 혜택 내역의 합산을 계산한다
+  - [x] 혜택 내역의 합산을 계산한다.
   - [x] 혜택 내역의 합산을 출력한다.
   - [x] 혜택 내역이 없을 경우 "0원"을 출력한다.
-- [x] 할인 후 예상 결제 금액 출력하기 (할인 전 총주문 금액 - 총혜택 금액)
+- [x] 할인 후 예상 결제 금액 출력하기 (할인 전 총주문 금액 - 총할인 금액)
 - [x] 12월 이벤트 배지 출력하기
   - [x] 5천 원 이상: 별
   - [x] 1만 원 이상: 트리
@@ -267,8 +258,8 @@
 
 - [x] 주문 입력 받을 때 메시지에 메뉴판 추가한다.
 
-
 - [x] 뱃지 출력후 안내사항 추가하기
+
   - [x] "(배지에 따라 2024 새해 이벤트 참여 시, 각각 다른 새해 선물을 증정할 예정입니다.)"
 
   - [x] 주문 메뉴 출력을 애피타이저 -> 메인-> 디저트-> 음료 순으로, ㄱㄴㄷ순으로 한다.
@@ -277,6 +268,7 @@
 <br/>
 
 # 📊 테스트 결과
+
 <details>
 <summary><h2>1) Model</h2></summary>
 <div markdown="1">
@@ -310,7 +302,6 @@
 </table>
 </div>
 </details>
-
 
 <details>
 <summary><h2>2) Model/Events</h2></summary>
@@ -361,8 +352,6 @@
 </div>
 </details>
 
-
-
 <details>
 <summary><h2>3) Validator</h2></summary>
 <div markdown="1">
@@ -386,9 +375,3 @@
 </table>
 </div>
 </details>
-
-
-
-
-
-
