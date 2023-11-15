@@ -1,6 +1,6 @@
-import { OutputView } from '../View/index';
-import PromotionSetupController from './PromotionSetupController';
-import PromotionResultController from './PromotionResultController';
+import { OutputView } from '../View/index.js';
+import PromotionSetupController from './PromotionSetupController.js';
+import PromotionResultController from './PromotionResultController.js';
 
 export default class ChristmasPromotion {
   static async start() {
