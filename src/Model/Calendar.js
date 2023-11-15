@@ -43,6 +43,7 @@ export default class Calendar {
   }
 
   calculateDaysSinceFirst() {
-    return this.#day - 1;
+    const { START_DAY } = DDAY_EVENT;
+    return this.#day - START_DAY;
   }
 }
