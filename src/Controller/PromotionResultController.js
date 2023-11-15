@@ -26,22 +26,6 @@ export default class PromotionResultController {
     OutputView.printDecemberEventBadge(MESSAGES.NONE);
   }
 
-  //  announceEvent() {
-  //   OutputView.printGiftMenu(this.#promotionManager.runGiftMenuEvent());
-
-  //   const discountDetail = this.#promotionManager.fetchTotalDiscountInfo();
-  //   OutputView.printDiscountDetails(discountDetail);
-
-  //   const totalBenefitAmount = this.#promotionManager.calculateTotalBenefits();
-  //   OutputView.printTotalDiscountAmount(totalBenefitAmount);
-
-  //   const expectedPayment =
-  //     this.#promotionManager.calculatePriceAfterPromotion();
-  //   OutputView.printExpectedPaymentAfterDiscount(expectedPayment);
-
-  //   const badge = this.#promotionManager.runBadgeEvent();
-  //   OutputView.printDecemberEventBadge(badge);
-  // }
   announceEvent() {
     this.printEventGiftMenu();
     this.printEventDetails();
