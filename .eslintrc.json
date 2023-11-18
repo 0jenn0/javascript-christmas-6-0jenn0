@@ -1,0 +1,32 @@
+/* eslint-disable class-methods-use-this */
+{
+  "env": {
+    "es6": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "extends": ["airbnb-base", "prettier"],
+  "rules": {
+    "max-depth": ["error", 2],
+    "max-lines-per-function": ["error", 15],
+    "indent": ["error", 2],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "eqeqeq": "error",
+    "no-console": "warn",
+    "no-dupe-args": "error",
+    "no-unreachable": "error",
+    "no-unused-vars": "warn",
+    "import/prefer-default-export": "off",
+    "import/extensions": ["off"],
+    "class-methods-use-this": "off",
+    "import/no-cycle": "off",
+    "no-var": 2,
+    "no-else-return": ["error", { "allowElseIf": false }],
+    "prefer-const": 2
+  },
+  "plugins": ["import"]
+}

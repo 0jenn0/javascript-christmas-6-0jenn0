@@ -1,5 +1,9 @@
+import { ChristmasPromotion } from './Controller/index.js';
+
 class App {
-  async run() {}
+  async run() {
+    await ChristmasPromotion.start();
+  }
 }
 
 export default App;
